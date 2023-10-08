@@ -176,8 +176,19 @@ public class Array {
         return product;
     }
 
-
-    public static void main(String[] args) {
+    public long long int factorial(int N){
+        //code here
         
+        if(N==0 || N==1) {
+            return 1;
+        } else{
+            long long int N1 = factorial(N-1);
+            long long int N2 = N*N1;
+            return N2;
+        }
+        
+    }
+    public static void main(String[] args) {
+
     }
 }
