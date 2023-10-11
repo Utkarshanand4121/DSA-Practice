@@ -100,7 +100,7 @@ public class CollegePractice {
         }
     }
     public static void main(String args[]){
-        Scanner sc = new Scanner(System.in);
+        // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter the num1: ");
         // int num1 = sc.nextInt();
         // System.out.print("Enter the num2: ");
@@ -111,22 +111,31 @@ public class CollegePractice {
 
         // Student s1 = new Student("Utkarsh");
         // System.out.println(s1.name);
-        System.out.print("Enter the num1: ");
-        int num1 = sc.nextInt();
+        // System.out.print("Enter the num1: ");
+        // int num1 = sc.nextInt();
         // System.out.print("Enter the num2: ");
         // int num2 = sc.nextInt();
         // System.out.print("Enter the num3: ");
         // int num3 = sc.nextInt();
         // larger(num1, num2, num3);
-        pallindrome(num1);
+        // pallindrome(num1);
+
+        Student s1 = new Student();
+        s1.getdetails("Utkarsh", 12345);
+        s1.displayDetails();
     }
-    class Student{
+}
+    class Student {
         String name;
         int roll;
-
-        Student(String name) {
+        void getdetails(String name, int roll) {
             this.name = name;
+            this.roll = roll;
+        }
+        void displayDetails(){
+            System.out.println("Student name: "+name);
+            System.out.println("Roll number: "+roll);
         }
     }
-} 
+ 
 
