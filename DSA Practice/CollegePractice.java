@@ -61,6 +61,44 @@ public class CollegePractice {
             System.out.println(num3 + " is larger");
         }
     }
+
+    public static void reverse(int num1) {
+        int lastnum;
+        while(num1>0) {
+            lastnum = num1 % 10;
+            num1 = num1 / 10;
+            System.out.print(+lastnum);
+        }
+    }
+
+    public static boolean prime(int num1) {
+        boolean isPrime = false;
+        if(num1==2){
+            isPrime = true;
+        }
+        for(int i=2; i<num1; i++) {
+            if(num1 % i == 0) {
+                isPrime = false;
+            }
+        }
+        return true;
+    }
+
+    public static void pallindrome(int num1) {
+        int originalNum = num1;
+        int lastnum;
+        int reverse = 0;
+        while(num1>0) {
+            lastnum = num1%10;
+            num1 = num1 / 10;
+            reverse = (reverse*10)+lastnum;
+        }
+        if(originalNum == reverse) {
+            System.out.print("Number is pallindrome");
+        } else{
+            System.out.print("Number is not pallindrome");
+        }
+    }
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         // System.out.print("Enter the num1: ");
@@ -75,12 +113,12 @@ public class CollegePractice {
         // System.out.println(s1.name);
         System.out.print("Enter the num1: ");
         int num1 = sc.nextInt();
-        System.out.print("Enter the num2: ");
-        int num2 = sc.nextInt();
-        System.out.print("Enter the num3: ");
-        int num3 = sc.nextInt();
-        larger(num1, num2, num3);
-    }
+        // System.out.print("Enter the num2: ");
+        // int num2 = sc.nextInt();
+        // System.out.print("Enter the num3: ");
+        // int num3 = sc.nextInt();
+        // larger(num1, num2, num3);
+        pallindrome(num1);
     }
     class Student{
         String name;
@@ -89,5 +127,6 @@ public class CollegePractice {
         Student(String name) {
             this.name = name;
         }
-    } 
+    }
+} 
 
