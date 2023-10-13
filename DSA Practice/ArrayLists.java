@@ -12,7 +12,17 @@ public class ArrayLists {
         result.add(b);
         return result;
     }
+    static ArrayList<Integer> getTable(int N){
+        // code here
+        ArrayList<Integer> arr = new ArrayList<>();
+        int table;
+        for(int i=1; i<=10; i++) {
+            table = N*i;
+            arr.add(table);
+        }
+        return arr;
+    }
     public static void main(String[] args) {
-
+        
     }
 }
