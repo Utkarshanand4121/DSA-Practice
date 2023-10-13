@@ -9,11 +9,6 @@ public class Array {
         return sum;
     }
 
-    static void printHelloWorld(){
-        // code here
-        System.out.print("Hello World");
-    }
-
     public int sum(int arr[], int n) {
         // code here
         int sum = 0;
@@ -54,47 +49,6 @@ public class Array {
             sum = sum + a[i];
         }
         return sum;
-    }
-    
-    static String compareNM(int n,int m){
-        // code here
-        String count;
-        if(n<m) {
-            count = "lesser";
-        } else if(n>m) {
-            count = "greater";
-        } else{
-            count = "equal";
-        }
-        return count;
-    }
-    
-    static String compareFive(int N){
-        // code here
-        String greater;
-        if(N>5) {
-            greater = "Greater than 5";
-        }
-        else if(N<5) {
-            greater = "Less than 5";
-        } else{
-            greater = "Equal to 5";
-        }
-        return greater;
-    }
-
-    
-    static String compareNum(int A, int B){
-        // code here
-        String result;
-        if(A>B) {
-            result = A+" is greater than "+B;
-        } else if(A<B) {
-            result = A+" is less than "+B;
-        } else {
-            result = A+" is equals to "+B;
-        }
-        return result;
     }
 
     int binarysearch(int arr[], int n, int k) {
