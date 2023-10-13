@@ -188,6 +188,15 @@ public class Array {
         }
         
     }
+    
+    public static int product(int arr[],int n)
+    {
+        int pro = 1;
+        for(int i=0 ;i<arr.length; i++) {
+            pro = pro * arr[i];
+        }
+        return pro;
+    }
     public static void main(String[] args) {
 
     }
