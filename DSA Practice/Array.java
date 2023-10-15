@@ -151,6 +151,19 @@ public class Array {
         }
         return pro;
     }
+
+    // Print N to 1 number without loop
+    void printNoss(int N) {
+        // code here
+        if(N==0) {
+            return;
+        } else{
+            System.out.print(N+" ");
+        }
+        printNos(N-1);
+        
+        
+    }
     public static void main(String[] args) {
 
     }
