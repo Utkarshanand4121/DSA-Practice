@@ -83,6 +83,17 @@ public class Basic {
         }
         return count;
     }
+
+    static int sumOfDigits(int N) {
+        // code here
+        int sum = 0;
+        while(N>0) {
+            int lastDigit = N%10;
+            sum = sum + lastDigit;
+            N = N/10;
+        }
+        return sum;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
