@@ -70,18 +70,31 @@ public class Basic {
         }
         return reve;
     }
+    static int evenlyDivides(int N){
+        // code here
+        int count = 0;
+        int originalNum = N;
+        while(N>0) {
+            int lastDigit = N%10;
+            if(lastDigit!=0 && originalNum%lastDigit==0) {
+                count++;
+            }
+            N = N/10;
+        }
+        return count;
+    }
     public static void main(String args[]){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a: ");
-        int a = sc.nextInt();
-        System.out.print("Enter b: ");
-        int b = sc.nextInt();
-        a = a ^ b;
-        b = a ^ b;
-        a = a ^ b;
-        System.out.println("Value after reversing");
-        System.out.println("a = "+a);
-        System.out.println("b = "+b);
-        
+        // Scanner sc = new Scanner(System.in);
+        // System.out.print("Enter a: ");
+        // int a = sc.nextInt();
+        // System.out.print("Enter b: ");
+        // int b = sc.nextInt();
+        // a = a ^ b;
+        // b = a ^ b;
+        // a = a ^ b;
+        // System.out.println("Value after reversing");
+        // System.out.println("a = "+a);
+        // System.out.println("b = "+b);
+        System.out.println(evenlyDivides(2446));
     }
 }
