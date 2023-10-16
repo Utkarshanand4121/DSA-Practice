@@ -162,8 +162,19 @@ public class Array {
         }
         printNos(N-1);
         
-        
     }
+    public boolean IsPerfect(int a[], int n)
+    {
+        // Complete the function
+        for(int i=0; i<n/2; i++) {
+            int last = n-1-i;
+            if(a[i]!=a[last]) {
+                return false;
+            }
+        } 
+        return true;
+    }
+    
     public static void main(String[] args) {
 
     }
