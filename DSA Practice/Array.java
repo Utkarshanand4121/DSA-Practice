@@ -174,6 +174,28 @@ public class Array {
         } 
         return true;
     }
+
+    float[] streamAvg(int[] arr, int n) {
+        // code here
+        int sum = 0;
+        float[] avge = new float[n];
+        for(int i=0; i<arr.length; i++) {
+            sum = sum + arr[i];
+            avge[i] = (float) sum / (i+1);
+        }
+        return avge;
+    }
+
+    static int mean(int N , int[] A) {
+        // code here
+        int sum = 0;
+        int mean = 0;
+        for(int i=0; i<A.length; i++) {
+            sum += A[i];
+            mean = sum/A.length;
+        }
+        return mean;
+    }
     
     public static void main(String[] args) {
 
