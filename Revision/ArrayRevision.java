@@ -77,8 +77,32 @@ public class ArrayRevision {
         }
     }
     
+    // Max Sum of subarray
+    public static void maxSum(int arr[]) {
+        int currSum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        for(int i=0; i<arr.length; i++) {
+            int start = i;
+            for(int j=i; j<arr.length; j++) {
+                int end = j;
+                currSum = 0;
+                for(int k=start; k<=end; k++) {
+                    currSum += arr[k];
+                }
+                if(maxSum<currSum) {
+                    maxSum = currSum;
+                }
+            }
+        }
+        System.out.println("max sum is "+maxSum);
+    }
+
+    // Prefix method
+    public static void prefix(int arr[]) {
+        
+    }
     public static void main(String[] args) {
         int arr[] = { 1, 2, 3, 4, 5 };
-        subArray(arr);
+        maxSum(arr);
     }
 }
