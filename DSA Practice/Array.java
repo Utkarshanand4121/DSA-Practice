@@ -197,6 +197,26 @@ public class Array {
         return mean;
     }
     
+    int countZeroes(int[] arr, int n) {
+        // code here
+        int count = 0;
+        for(int i=0; i<n; i++) {
+            if(arr[i] == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    int transitionPoint(int arr[], int n) {
+        // code here
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
 
     }
