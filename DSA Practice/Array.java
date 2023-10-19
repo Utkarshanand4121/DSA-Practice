@@ -217,6 +217,37 @@ public class Array {
         }
         return -1;
     }
+
+    public void countOddEven(int[] arr, int n)
+    {
+        // Code here
+        int count = 0;
+        int oddCount = 0;
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] % 2==0) {
+                count++;
+            } else {
+                oddCount++;
+            }
+        }
+        System.out.print(oddCount+" "+count);
+        System.out.println();
+    }
+
+    static void countOddEven2(int a[], int n) {
+
+        // Your code here
+        int count = 0;
+        int oddCount = 0;
+        for(int i=0; i<n; i++) {
+            if(a[i] % 2==0) {
+                count++;
+            } else {
+                oddCount++;
+            }
+        }
+        System.out.print(oddCount+" "+count);
+    }
     public static void main(String[] args) {
 
     }
