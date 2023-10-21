@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Array {
 
     public static int sumElement(int arr[], int n) {
@@ -259,6 +261,38 @@ public class Array {
             }
         }
         return -1;
+    }
+
+    public int find_median(int[] v)
+    {
+        // Code here
+        int start = 0;
+        int last = v.length;
+        int mid = 0;
+        Arrays.sort(v);
+        mid = (start+last)/2;
+        if(v.length%2==0) {
+            return (v[mid-1] + v[mid]) / 2;
+        }
+        return v[mid];
+    }
+
+    public int[] find_sum(int n)
+    {
+        // Code here
+        int oddSum = 0;
+        int evenSum = 0;
+        for(int i=1; i<=n; i++) {
+            if(i%2==0) {
+                evenSum += i;
+            } else {
+                oddSum += i;
+            }
+        }
+        int sum[] = new int[2];
+        sum[0] = oddSum;
+        sum[1] = evenSum;
+        return sum;
     }
     public static void main(String[] args) {
 
