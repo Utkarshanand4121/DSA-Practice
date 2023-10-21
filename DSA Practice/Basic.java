@@ -94,6 +94,16 @@ public class Basic {
         }
         return sum;
     }
+
+    static int cubeRoot(int N) {
+        // code here
+        if(N == 0){
+            return 0;
+        }
+        int N1 = N;
+        int cuberott = (int) Math.cbrt(N1);
+        return cuberott;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
