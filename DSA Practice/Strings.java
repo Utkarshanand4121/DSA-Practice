@@ -66,6 +66,25 @@ public class Strings {
         }
         return 1;
     }
+
+    // Armstrong num
+    static String armstrongNumber(int n){
+        // code here
+        int lastDigit = 0;
+        int originalNum = n;
+        int cb = 0;
+        while(n>0) {
+            lastDigit = n%10;
+            cb += (int) Math.pow(lastDigit,3);
+            n = n/10;
+        }
+        if(cb == originalNum) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+        
+    }
     public static void main(String[] args) {
 
     }
