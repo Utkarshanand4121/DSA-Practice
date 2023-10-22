@@ -104,6 +104,19 @@ public class Basic {
         int cuberott = (int) Math.cbrt(N1);
         return cuberott;
     }
+
+    int greatestOfThree(int A, int B, int C) {
+        // code here
+        int gre = 0;
+        if(A>B && A>C) {
+            gre = A;
+        } else if(B>A && B>C) {
+            gre = B;
+        } else {
+            gre = C;
+        }
+        return gre;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
