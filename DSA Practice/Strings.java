@@ -85,6 +85,26 @@ public class Strings {
         }
         
     }
+
+    boolean isBinary(String str)
+	{
+	  //Your code here
+	  for(int i=0; i<str.length(); i++) {
+	      if(str.charAt(i) != '1' && str.charAt(i) != '0' ) {
+	          return false;
+	      }
+	  }
+	  return true;
+	  
+	}
+
+    public String chartostr(char arr[], int N){
+        StringBuilder str = new StringBuilder();
+        for(int i=0; i<N; i++) {
+            str.append(arr[i]);
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
 
     }
