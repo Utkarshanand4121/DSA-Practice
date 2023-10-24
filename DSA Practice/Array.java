@@ -294,6 +294,34 @@ public class Array {
         sum[1] = evenSum;
         return sum;
     }
+
+    public long countOfElements(long arr[], long n, long x)
+    {
+        long count = 0;
+        for(int i=0; i<n; i++) {
+            if(arr[i]<=x) {
+                count++;
+            }
+            else{
+                break;
+            }
+        }
+        return count;
+    }
+
+    public static boolean check(long A[],long B[],int N)
+    {
+        //Your code here
+        Arrays.sort(A);
+        Arrays.sort(B);
+        for(int i=0; i<N; i++) {
+            if(A[i]!=B[i]) {
+                return false;
+            } 
+                
+        }
+        return true;
+    }
     public static void main(String[] args) {
 
     }
