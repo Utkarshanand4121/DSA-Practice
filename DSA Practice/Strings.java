@@ -105,6 +105,24 @@ public class Strings {
         }
         return str.toString();
     }
+
+    public String is_palindrome(int n)
+    {
+        // Code here
+        int lastnum;
+        int reverseNum = 0;
+        int originalNum = n;
+        while(n>0) {
+            lastnum = n%10;
+            reverseNum = (reverseNum*10)+lastnum;
+            n = n/10;
+        }
+        if(originalNum == reverseNum) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
     public static void main(String[] args) {
 
     }
