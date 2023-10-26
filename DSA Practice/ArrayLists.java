@@ -22,6 +22,23 @@ public class ArrayLists {
         }
         return arr;
     }
+
+    ArrayList<Long> alternateSort(long arr[] ,int N)
+    {
+        
+        // Your code goes here
+        Arrays.sort(arr);
+        ArrayList<Long> a = new ArrayList<>();
+        int start = 0;
+        int end = N-1; 
+        while(start<=end) {
+            a.add(arr[end]);
+            a.add(arr[start]);
+            end--;
+            start++;
+        }
+        return a;
+    }
     public static void main(String[] args) {
         
     }
