@@ -363,6 +363,13 @@ public class Array {
         return (int) sum;
     }
     
+    int maxProduct(int arr[], int n) {
+        // code here
+        Arrays.sort(arr);
+        int prod = 1;
+        prod = arr[n-1] * arr[n-2];
+        return prod;
+    }
     public static void main(String[] args) {
 
     }
