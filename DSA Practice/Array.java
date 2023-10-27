@@ -370,6 +370,40 @@ public class Array {
         prod = arr[n-1] * arr[n-2];
         return prod;
     }
+
+    void immediateSmaller(int arr[], int n) {
+        // code here
+        for(int i=0; i<n-1; i++) {
+            if(arr[i]>arr[i+1]) {
+                arr[i] = arr[i+1];
+            } else {
+                arr[i] = -1;
+            }
+        }
+        
+        arr[n-1] = -1;
+    }
+
+    // Function for finding maximum and value pair
+    public static int[] game_with_number (int arr[], int n) {
+        // Complete the function
+        int a[] = new int[n];
+        for(int i=0; i<n-1; i++) {
+            a[i] = arr[i] ^ arr[i+1];
+        }
+        a[n-1] = arr[n-1];
+        return a;
+    }
+
+    static Pair getMinMax(long a[], long n)  
+    {
+        //Write your code here
+        Arrays.sort(a);
+        a[0] = a[0];
+        a[1] = a[(int)n-1];
+        return new Pair(a[0], a[1]);
+        
+    }
     public static void main(String[] args) {
 
     }
