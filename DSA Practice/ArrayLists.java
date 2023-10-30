@@ -39,6 +39,20 @@ public class ArrayLists {
         }
         return a;
     }
+
+    static ArrayList<Integer> preorder(Node root)
+    {
+        // Code here
+        ArrayList<Integer> arr = new ArrayList<>();
+        if(root == null) {
+            return arr; 
+        }
+        arr.add(root.data);
+        arr.addAll(preorder(root.left));
+        arr.addAll(preorder(root.right));
+        
+        return arr;
+    }
     public static void main(String[] args) {
         
     }
