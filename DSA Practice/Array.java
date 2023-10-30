@@ -440,6 +440,21 @@ public class Array {
         }
         arr[0] = x;
     }
+
+    public static long find_multiplication (int arr[], int brr[], int n, int m) {
+        // Complete the Function
+        Arrays.sort(arr);
+        Arrays.sort(brr);
+        long pr = arr[n-1] * brr[0];
+        return pr;
+    }
+
+    public long printMinimumProduct(long arr[], long n)
+    {
+        Arrays.sort(arr);
+        long pr = arr[0] * arr[1];
+        return pr;
+    }
     public static void main(String[] args) {
 
     }
