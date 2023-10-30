@@ -1,5 +1,7 @@
 import java.util.*;
 
+import org.w3c.dom.Node;
+
 public class ArrayLists {
     static List<Integer> get(int a,int b)
     {
@@ -52,6 +54,31 @@ public class ArrayLists {
         arr.addAll(preorder(root.right));
         
         return arr;
+    }
+
+    ArrayList<Integer> inOrder(Node root) {
+        // Code
+        ArrayList<Integer> arr = new ArrayList<>();
+        if(root == null) {
+            return arr;
+        }
+        arr.addAll(inOrder(root.left));
+        arr.add(root.data);
+        arr.addAll(inOrder(root.right));
+        return arr;
+    }
+
+    ArrayList<Integer> postOrder(Node root)
+    {
+       // Your code goes here
+       ArrayList<Integer> arr = new ArrayList<>();
+       if(root == null) {
+           return arr;
+       }
+       arr.addAll(postOrder(root.left));
+       arr.addAll(postOrder(root.right));
+       arr.add(root.data);
+       return arr;
     }
     public static void main(String[] args) {
         
