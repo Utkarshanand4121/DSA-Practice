@@ -80,6 +80,16 @@ public class ArrayLists {
        arr.add(root.data);
        return arr;
     }
+
+    ArrayList <Integer> acceptedProposals (int arr[], int n)
+    {
+        // your code here
+        ArrayList<Integer> a = new ArrayList<>();
+        Arrays.sort(arr);
+        a.add(arr[n-2]);
+        a.add(arr[1]);
+        return a;
+    }
     public static void main(String[] args) {
         
     }
