@@ -455,6 +455,13 @@ public class Array {
         long pr = arr[0] * arr[1];
         return pr;
     }
+
+    int[] sortArr(int[] arr, int n) 
+    { 
+        // code here
+        Arrays.sort(arr);
+        return arr;
+    }
     public static void main(String[] args) {
 
     }
