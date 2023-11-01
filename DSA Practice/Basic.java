@@ -117,6 +117,16 @@ public class Basic {
         }
         return gre;
     }
+
+    static int countSquares(int N) {
+        // code here
+        int count = 0;
+        
+        for(int i=1; i * i<N; i++) {
+            count++;
+        }
+        return count;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
