@@ -497,6 +497,18 @@ public class Array {
         }
         return 0;
     }
+
+    public String is_AutomorphicNumber(int n)
+    {
+        // Code here
+        int last = n%10;
+        int sq = (int)Math.pow(n,2);
+        int last1 = sq%10;
+        if(last == last1) {
+            return "Automorphic";
+        }
+        return "Not Automorphic";
+    }
     public static void main(String[] args) {
 
     }
