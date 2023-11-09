@@ -475,6 +475,28 @@ public class Array {
         }
         return sum1*sum2;
     }
+
+    int isDigitSumPalindrome(int N) {
+        // code here
+        int sum = 0;
+        while(N>0) {
+            int last = N%10;
+            sum = sum + last;
+            N = N / 10;
+        }
+        int rev = 0;
+        int originalSum = sum;
+        while(sum>0) {
+            int last1 = sum%10;
+            rev = (rev*10) + last1;
+            sum = sum / 10;
+        }
+        
+        if(rev == originalSum) {
+            return 1;
+        }
+        return 0;
+    }
     public static void main(String[] args) {
 
     }
