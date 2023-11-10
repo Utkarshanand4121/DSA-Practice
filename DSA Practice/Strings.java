@@ -132,6 +132,43 @@ public class Strings {
         }
         return -1;
     }
+
+    String removeVowels(String S) {
+        // code here
+        StringBuilder str = new StringBuilder();
+        for(int i=0; i<S.length(); i++) {
+            char c = S.charAt(i);
+            if(c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
+                str.append(c);
+            }
+        }
+        return str.toString();
+    }
+
+    String removeCharacters(String S) {
+        // code here
+        StringBuilder str = new StringBuilder();
+        for(int i=0; i<S.length(); i++) {
+            char c = S.charAt(i);
+            if(c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9') {
+                str.append(c);
+            }
+        }
+        return str.toString();
+    }
+
+    String modify(String S)
+    {
+        // your code here
+        StringBuilder str = new StringBuilder();
+        for(int i=0; i<S.length(); i++) {
+            char c = S.charAt(i);
+            if(c != ' ') {
+                str.append(c);
+            }
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
 
     }
