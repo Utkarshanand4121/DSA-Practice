@@ -520,6 +520,40 @@ public class Array {
         }
         return a;
     }
+
+    public long leftElement(long arr[], long n)
+    {
+        // Your code goes here  
+        Arrays.sort(arr);
+        long n1 = 0;
+        if(n%2==0) {
+            n1 = arr[(int)(n/2)-1];
+        } else {
+            n1 = arr[(int) n/2];
+        }
+        return n1;
+    }
+
+    static int[] findIndex(int a[], int N, int key) 
+    { 
+        //code here.
+        int start = -1;
+        int end = -1;
+        int arr[] = new int[N];
+        for(int i=0; i<N; i++) {
+            if(a[i] == key) {
+                start = i;
+            }
+        }
+        for(int i=N-1; i>=0; i--) {
+            if(a[i] == key) {
+                end = i;
+            }
+        }
+        arr[0] = end;
+        arr[1] = start;
+        return arr;
+    }
     public static void main(String[] args) {
 
     }
