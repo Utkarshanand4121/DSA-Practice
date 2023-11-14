@@ -169,6 +169,27 @@ public class Strings {
         }
         return str.toString();
     }
+    static String conRevstr(String S1, String S2) {
+        // code here
+        String str = S1+S2;
+        StringBuilder str2 = new StringBuilder();
+        for(int i=str.length()-1; i>=0; i--) {
+            str2.append(str.charAt(i));
+        }
+        return str2.toString();
+    }
+
+    static String delAlternate(String S) {
+        // code here
+        StringBuilder str = new StringBuilder();
+        str.append(S.charAt(0));
+        for(int i=1; i<S.length(); i++) {
+            if(i % 2 == 0) {
+                str.append(S.charAt(i));
+            }
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
 
     }
