@@ -129,6 +129,33 @@ public class Pattern {
             System.out.println();
         }
     }
+
+    // need practice - mirror error
+    void printTriangl(int n) {
+        // code here
+        char ch = 'A';
+        for(int i=1; i<=n; i++) {
+            char temp = ch;
+            for(int j=1; j<=i; j++) {
+                System.out.print(temp);
+                temp++;
+            }
+            System.out.println();
+        }
+    }
+
+    void printTriang(int n) {
+        // code here
+        char ch = 'A';
+        for(int i=n; i>0; i--) {
+            char temp = ch;
+            for(int j=1; j<=i; j++) {
+                System.out.print(temp);
+                temp++;
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
         printTriangle5(5);
     }
