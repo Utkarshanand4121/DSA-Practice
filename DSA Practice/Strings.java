@@ -208,6 +208,20 @@ public class Strings {
         }
         
     }
+
+    String firstAlphabet(String S) {
+        // code here
+        StringBuilder str = new StringBuilder();
+        
+        str.append(S.charAt(0));
+        for(int i=1; i<S.length(); i++) {
+            char s = S.charAt(i);
+            if(s == ' ') {
+                str.append(S.charAt(i+1));
+            }
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
 
     }
