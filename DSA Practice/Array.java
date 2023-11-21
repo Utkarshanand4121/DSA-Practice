@@ -554,6 +554,17 @@ public class Array {
         arr[1] = start;
         return arr;
     }
+
+    int maxTripletSum(int a[], int n)
+    {
+        // Complete the function
+        Arrays.sort(a);
+        int sum = 0;
+        for(int i=n-1; i>=n-3; i--) {
+            sum += a[i];
+        }
+        return sum;
+    }
     public static void main(String[] args) {
 
     }
