@@ -90,6 +90,24 @@ public class ArrayLists {
         a.add(arr[1]);
         return a;
     }
+
+    public static ArrayList<Integer> array(int a[][], int b[], int n)
+    {
+        // Complete the function
+        ArrayList<Integer> arr = new ArrayList<>();
+        int sum = 0;
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                if(i == j) {
+                    sum += a[i][j];
+                }
+            } 
+        }
+        Arrays.sort(b);
+        arr.add(sum);
+        arr.add(b[n-1]);
+        return arr;
+    }
     public static void main(String[] args) {
         
     }
