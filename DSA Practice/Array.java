@@ -565,6 +565,23 @@ public class Array {
         }
         return sum;
     }
+
+    static int dataTypeSize(String str) {
+        // code here
+        int count = 0;
+        if(str.equals("Character")) {
+            count = 1;
+        } else if(str.equals("Integer")) {
+            count = 4;
+        } else if(str.equals("Long")) {
+            count = 8;
+        } else if(str.equals("Float")) {
+            count = 4;
+        } else if(str.equals("Double")) {
+            count = 8;
+        } 
+        return count;
+    }
     public static void main(String[] args) {
 
     }
