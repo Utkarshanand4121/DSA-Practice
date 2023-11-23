@@ -582,6 +582,29 @@ public class Array {
         } 
         return count;
     }
+
+    long maxDays(long arr[], int n){
+        // code here 
+        Arrays.sort(arr);
+        return arr[n-1];
+    }
+
+    public long totalFine( long n, long date, long car[], long fine[])
+    {
+        long evenSum = 0;
+        long oddSum = 0;
+        for(int i=0; i<n; i++) {
+            if(car[i] % 2 == 0) {
+                evenSum += fine[i];
+            } else {
+                oddSum += fine[i];
+            }
+        }
+        if(date % 2 == 0) {
+            return oddSum;
+        }
+        return evenSum;
+    }
     public static void main(String[] args) {
 
     }
