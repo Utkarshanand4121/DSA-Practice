@@ -605,6 +605,28 @@ public class Array {
         }
         return evenSum;
     }
+
+    // Important
+    public long firstIndex(long arr[], long n)
+    {
+        // Your code goes here
+        long key = 1;
+        long start = 0;
+        long end = n-1;
+        long result = -1;
+        while(start<=end) {
+            long mid = start + (end - start) / 2; 
+            if(arr[(int)mid] > 0 && arr[(int)mid] == key) {
+                result = mid;
+                end = mid-1;
+            } else if(arr[(int)mid] < key){
+                start = mid+1;
+            } else {
+                end = mid-1;
+            }
+        }
+        return result;
+    }
     public static void main(String[] args) {
 
     }
