@@ -108,6 +108,22 @@ public class ArrayLists {
         arr.add(b[n-1]);
         return arr;
     }
+
+    public static ArrayList<Integer> dupLastIndex (int arr[], int n) {
+        //Complete the function
+        ArrayList<Integer> res = new ArrayList<>();
+        for(int i= n-1; i>0; i--) {
+            if(arr[i] == arr[i-1]) {
+                res.add(i);
+                res.add(arr[i]);
+                break;
+            }
+        }
+        if(res.isEmpty()) {
+            res.add(-1);
+        }
+        return res;
+    }
     public static void main(String[] args) {
         
     }
