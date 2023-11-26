@@ -222,6 +222,36 @@ public class Strings {
         }
         return str.toString();
     }
+
+    public String removeConsecutiveCharacter(String S){
+        StringBuilder str = new StringBuilder();
+        str.append(S.charAt(0));
+        for(int i=1; i<S.length(); i++) {
+            char ch = S.charAt(i);
+            if(ch != S.charAt(i-1)) {
+                str.append(ch);
+            }
+        }
+        return str.toString();
+    }
+
+    public String modify2(String s){
+        char ch = s.charAt(0);
+        if(Character.isUpperCase(ch)) { // Remember this line
+            return s.toUpperCase();
+        }
+        return s.toLowerCase();
+    }
+
+    int LastIndex(String s, char p){
+        // code here
+        for(int i = s.length()-1; i>=0; i--) {
+            if(s.charAt(i) == p) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
 
     }
