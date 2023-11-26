@@ -627,6 +627,12 @@ public class Array {
         }
         return result;
     }
+
+    public static void sort012(int a[], int n)
+    {
+        // code here 
+        Arrays.sort(a);
+    }
     public static void main(String[] args) {
 
     }
