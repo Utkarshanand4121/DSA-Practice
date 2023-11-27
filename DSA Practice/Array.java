@@ -625,6 +625,13 @@ public class Array {
         return sum;
     }
 
+    int findMin(int arr[], int n)
+    {
+        //complete the function here
+        Arrays.sort(arr);
+        return arr[0];
+    }
+
     public static void main(String[] args) {
 
     }
