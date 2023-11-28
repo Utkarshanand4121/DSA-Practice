@@ -625,9 +625,14 @@ public class Array {
         return sum;
     }
 
-    int findMin(int arr[], int n)
-    {
-        //complete the function here
+    int findMin(int arr[], int n) {
+        // complete the function here
+        Arrays.sort(arr);
+        return arr[0];
+    }
+
+    static int minNumber(int arr[], int low, int high) {
+        // Your code here
         Arrays.sort(arr);
         return arr[0];
     }
