@@ -150,6 +150,23 @@ public class Basic {
         }
         return str;
     }
+
+    // Mathematics
+    static int maximizeMoney(int N , int K) {
+        // code here
+        int res = 0;
+        if(N%2==0) {
+            res = (N/2)*K;
+        } else {
+            res = ((N/2)+1)*K;
+        }
+        return res;
+    }
+
+    static int mindGame(int K) {
+        // code here
+        return K/2;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
