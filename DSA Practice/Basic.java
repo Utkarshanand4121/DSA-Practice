@@ -182,6 +182,17 @@ public class Basic {
         }
         return repeatedSumOfDigits(sum);
     }
+
+    static long isPerfectSquare(long n){
+        // code here
+        long res = 0;
+        for(int i=1; i<=(int)Math.sqrt(n); i++) {
+            if(n == (i*i)) {
+                res = 1;
+            }
+        }
+        return res;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
