@@ -637,6 +637,23 @@ public class Array {
         return arr[0];
     }
 
+    public static int num(int a[], int n, int k) {
+        // Your code here
+        int last = 0;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            while (a[i] > 0) {
+                last = a[i] % 10;
+                if (last == k) {
+                    count++;
+                }
+                a[i] = a[i] / 10;
+            }
+
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
 
     }
