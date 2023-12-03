@@ -690,6 +690,18 @@ public class Array {
 	        arr[i] = temp;
 	    }
 	}
+
+    public long minValue(long a[], long b[], long n) 
+    {
+        // Your code goes here
+        Arrays.sort(a);
+        Arrays.sort(b);
+        long prod = 0;
+        for(int i=0; i<(int)n; i++) {
+            prod += a[i] * b[(int)n-1-i];
+        }
+        return prod;
+    }
     public static void main(String[] args) {
 
     }
