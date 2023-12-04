@@ -654,54 +654,70 @@ public class Array {
         return count;
     }
 
-    public static void bubbleSort(int arr[], int n)
-    {
-        //code here
-        for(int i=0; i<n-1; i++) {
-            for(int j=0; j<n-1-i; j++) {
-                if(arr[j]>arr[j+1]) {
+    public static void bubbleSort(int arr[], int n) {
+        // code here
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
     }
 
-    int[]  select(int arr[], int i)
-	{
+    int[] select(int arr[], int i) {
         // code here such that selectionSort() sorts arr[]
         selectionSort(arr, i);
         return arr;
-	}
-	
-	void selectionSort(int arr[], int n)
-	{
-	    //code here
-	    for(int i=0; i<n-1; i++) {
-	        int minpos = i;
-	        for(int j=i+1; j<n; j++) {
-	            if(arr[minpos] > arr[j]) {
-	                minpos = j;
-	            }
-	        }
-	        int temp = arr[minpos];
-	        arr[minpos] = arr[i];
-	        arr[i] = temp;
-	    }
-	}
+    }
 
-    public long minValue(long a[], long b[], long n) 
-    {
+    void selectionSort(int arr[], int n) {
+        // code here
+        for (int i = 0; i < n - 1; i++) {
+            int minpos = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[minpos] > arr[j]) {
+                    minpos = j;
+                }
+            }
+            int temp = arr[minpos];
+            arr[minpos] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public long minValue(long a[], long b[], long n) {
         // Your code goes here
         Arrays.sort(a);
         Arrays.sort(b);
         long prod = 0;
-        for(int i=0; i<(int)n; i++) {
-            prod += a[i] * b[(int)n-1-i];
+        for (int i = 0; i < (int) n; i++) {
+            prod += a[i] * b[(int) n - 1 - i];
         }
         return prod;
     }
+
+    static void insert(int arr[], int i) {
+        // Your code here
+        insert(arr, i);
+    }
+
+    // Function to sort the array using insertion sort algorithm.
+    public void insertionSort(int arr[], int n) {
+        // code here
+        for (int i = 1; i < n; i++) {
+            int curr = arr[i];
+            int prev = i - 1;
+            while (prev >= 0 && arr[prev] > curr) {
+                arr[prev + 1] = arr[prev];
+                prev--;
+            }
+            arr[prev + 1] = curr;
+        }
+    }
+
     public static void main(String[] args) {
 
     }
