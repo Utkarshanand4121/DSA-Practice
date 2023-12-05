@@ -718,6 +718,17 @@ public class Array {
         }
     }
 
+    boolean arraySortedOrNot(int[] arr, int n) {
+        // code here
+        boolean res = true;
+        for(int i=1; i<n ;i++) {
+            if(arr[i] < arr[i-1]) {
+                res = false;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
