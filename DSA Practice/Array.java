@@ -729,6 +729,19 @@ public class Array {
         return res;
     }
 
+    int print2largest(int arr[], int n) {
+        // code here
+        Arrays.sort(arr);
+        int res = -1;
+        for(int i=n-1; i>=1; i--) {
+            if(arr[i-1] != arr[i]) {
+                res = arr[i-1];
+                break;
+            } 
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
