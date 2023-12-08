@@ -252,6 +252,22 @@ public class Strings {
         }
         return -1;
     }
+
+    static int RedOrGreen(int N, String S) {
+        //code here
+        int count1 = 0;
+        int count2 = 0;
+        for(int i=0; i<S.length(); i++) {
+            char ch = S.charAt(i);
+            if(ch == 'R') {
+                count1++;
+            } else{
+                count2++;
+            }
+        }
+        int res = (int)Math.min(count1, count2);
+        return res;
+    }
     public static void main(String[] args) {
 
     }
