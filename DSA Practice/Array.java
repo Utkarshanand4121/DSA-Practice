@@ -742,6 +742,25 @@ public class Array {
         return res;
     }
 
+    int findMaximum(int[] arr, int n) {
+        // code here
+        Arrays.sort(arr);
+        int res = arr[n-1];
+        return res;
+    }
+
+    public int peakElement(int[] arr,int n)
+    {
+       //add code here.
+       int res = 0;
+       for(int i=1; i<n; i++) {
+           if(arr[i] > arr[i-1]) {
+               res = i;
+           }
+       }
+       return res;
+    }
+
     public static void main(String[] args) {
 
     }
