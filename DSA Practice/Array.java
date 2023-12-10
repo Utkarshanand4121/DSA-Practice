@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Array {
 
@@ -759,6 +760,32 @@ public class Array {
            }
        }
        return res;
+    }
+
+    int findSum(int arr[], int n) {
+        // code here
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0; i<n ; i++) {
+            set.add(arr[i]);
+        }
+        int sum = 0;
+        for(Integer i : set) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    long sumOfDistinct(long arr[], int N)
+    {
+        HashSet<Long> set = new HashSet<>();
+        for(int i=0; i<N; i++) {
+            set.add(arr[i]);
+        }
+        int sum = 0;
+        for(Long i : set) {
+            sum += i;
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
