@@ -788,6 +788,23 @@ public class Array {
         return sum;
     }
 
+    public static ArrayList<Integer> countArray (int arr[], int n, int x) {
+        //Complete the function
+        ArrayList<Integer> res = new ArrayList<>();
+        int avg = 0;
+        for(int i=0; i<n; i++) {
+            int count = 0;
+            avg = (arr[i]+x)/2;
+            for(int j=0; j<n; j++) {
+                if(arr[j] == avg) {
+                    count++;
+                }
+            }
+            res.add(count);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
