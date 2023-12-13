@@ -268,6 +268,34 @@ public class Strings {
         int res = (int)Math.min(count1, count2);
         return res;
     }
+
+    public int penaltyScore(String S)
+    {
+        // Your code goes here
+        int count = 0;
+        for(int i=S.length()-1; i>0; i--) {
+            char ch = S.charAt(i);
+            char ch1 = S.charAt(i-1);
+            if(ch == '1' && ch1 == '2') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    String isGoodString(String s) 
+    { 
+        // code here
+        String str = "YES";
+        for(int i=s.length()-1; i>0; i--) {
+            char ch = s.charAt(i);
+            char ch1 = s.charAt(i-1);
+            if(ch == ch1) {
+                str = "NO";
+            }
+        }
+        return str;
+    }
     public static void main(String[] args) {
 
     }
