@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -805,6 +806,33 @@ public class Array {
         return res;
     }
 
+    public long[] minAnd2ndMin(long a[], long n)  
+    {
+        long res[] = new long[(int)n];
+        Arrays.sort(a);
+        res[0] = -1;
+        for(int i=1; i<(int)n; i++){
+            if(a[i] != a[i-1]) {
+                res[1] = a[i];
+                res[0] = a[0];
+                break;
+            }
+        }
+        return res;
+    }
+
+    public long findMissing(long a[], long b[], int n) {
+        Arrays.sort(a);
+        Arrays.sort(b);
+        long res = 0;
+        int minLen = Math.min(a.length, b.length);
+        for(int i=0; i<minLen; i++) {
+            if(a[i] != b[i]) {
+                res = a[i];
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
 
     }
