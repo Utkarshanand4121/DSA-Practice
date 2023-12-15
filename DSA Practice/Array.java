@@ -723,8 +723,8 @@ public class Array {
     boolean arraySortedOrNot(int[] arr, int n) {
         // code here
         boolean res = true;
-        for(int i=1; i<n ;i++) {
-            if(arr[i] < arr[i-1]) {
+        for (int i = 1; i < n; i++) {
+            if (arr[i] < arr[i - 1]) {
                 res = false;
             }
         }
@@ -735,11 +735,11 @@ public class Array {
         // code here
         Arrays.sort(arr);
         int res = -1;
-        for(int i=n-1; i>=1; i--) {
-            if(arr[i-1] != arr[i]) {
-                res = arr[i-1];
+        for (int i = n - 1; i >= 1; i--) {
+            if (arr[i - 1] != arr[i]) {
+                res = arr[i - 1];
                 break;
-            } 
+            }
         }
         return res;
     }
@@ -747,57 +747,55 @@ public class Array {
     int findMaximum(int[] arr, int n) {
         // code here
         Arrays.sort(arr);
-        int res = arr[n-1];
+        int res = arr[n - 1];
         return res;
     }
 
-    public int peakElement(int[] arr,int n)
-    {
-       //add code here.
-       int res = 0;
-       for(int i=1; i<n; i++) {
-           if(arr[i] > arr[i-1]) {
-               res = i;
-           }
-       }
-       return res;
+    public int peakElement(int[] arr, int n) {
+        // add code here.
+        int res = 0;
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > arr[i - 1]) {
+                res = i;
+            }
+        }
+        return res;
     }
 
     int findSum(int arr[], int n) {
         // code here
         HashSet<Integer> set = new HashSet<>();
-        for(int i=0; i<n ; i++) {
+        for (int i = 0; i < n; i++) {
             set.add(arr[i]);
         }
         int sum = 0;
-        for(Integer i : set) {
+        for (Integer i : set) {
             sum += i;
         }
         return sum;
     }
 
-    long sumOfDistinct(long arr[], int N)
-    {
+    long sumOfDistinct(long arr[], int N) {
         HashSet<Long> set = new HashSet<>();
-        for(int i=0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             set.add(arr[i]);
         }
         int sum = 0;
-        for(Long i : set) {
+        for (Long i : set) {
             sum += i;
         }
         return sum;
     }
 
-    public static ArrayList<Integer> countArray (int arr[], int n, int x) {
-        //Complete the function
+    public static ArrayList<Integer> countArray(int arr[], int n, int x) {
+        // Complete the function
         ArrayList<Integer> res = new ArrayList<>();
         int avg = 0;
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             int count = 0;
-            avg = (arr[i]+x)/2;
-            for(int j=0; j<n; j++) {
-                if(arr[j] == avg) {
+            avg = (arr[i] + x) / 2;
+            for (int j = 0; j < n; j++) {
+                if (arr[j] == avg) {
                     count++;
                 }
             }
@@ -806,13 +804,12 @@ public class Array {
         return res;
     }
 
-    public long[] minAnd2ndMin(long a[], long n)  
-    {
-        long res[] = new long[(int)n];
+    public long[] minAnd2ndMin(long a[], long n) {
+        long res[] = new long[(int) n];
         Arrays.sort(a);
         res[0] = -1;
-        for(int i=1; i<(int)n; i++){
-            if(a[i] != a[i-1]) {
+        for (int i = 1; i < (int) n; i++) {
+            if (a[i] != a[i - 1]) {
                 res[1] = a[i];
                 res[0] = a[0];
                 break;
@@ -826,13 +823,32 @@ public class Array {
         Arrays.sort(b);
         long res = 0;
         int minLen = Math.min(a.length, b.length);
-        for(int i=0; i<minLen; i++) {
-            if(a[i] != b[i]) {
+        for (int i = 0; i < minLen; i++) {
+            if (a[i] != b[i]) {
                 res = a[i];
             }
         }
         return res;
     }
+
+    long minValueToBalance(long a[], int n) {
+        long sum = 0;
+        long sum2 = 0;
+        long res = 0;
+        for (int i = 0; i < n / 2; i++) {
+            sum += a[i];
+        }
+        for (int i = n / 2; i < n; i++) {
+            sum2 += a[i];
+        }
+        if (sum > sum2) {
+            res = (sum - sum2);
+        } else {
+            res = (sum2 - sum);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
