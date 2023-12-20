@@ -93,6 +93,24 @@ public class StackRevision {
         System.out.println();
     }
 
+    // Parenthesis
+    public static boolean parenthesis(String str) {
+        Stack<Character> s = new Stack<>();
+        for(int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+            if(ch == '(' || ch == '{' || ch == '[') {
+                s.push(ch);
+            }
+            if(s.peek() == '(' && ch == ')' || s.peek() == '{' && ch == '}' || s.peek() == '[' && ch == ']') {
+                s.pop();
+            }
+        }
+        if(s.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static void main(String[] args) {
         // Stack<Integer> s = new Stack<>();
         // s.push(1);
@@ -104,7 +122,9 @@ public class StackRevision {
 
         // System.out.println(reverseString("abc"));
 
-        nextGreater();
+        // nextGreater();
 
+        String str = "{([)}";
+        System.out.println(parenthesis(str));
     }
 }
