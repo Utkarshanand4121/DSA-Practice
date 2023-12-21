@@ -136,6 +136,50 @@ public class StackRevision {
         }
         return false;
     }
+
+    // Histogram area
+    public static void maxArea(int arr[]) {
+        int maxArea = 0;
+        int nsr[] = new int[arr.length];
+        int nsl[] = new int[arr.length];
+
+        // Next Smaller left
+        Stack<Integer> s = new Stack<>();
+        for(int i=0; i<arr.length; i++) {
+            while(!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+            if(s.isEmpty()) {
+                nsl[i] = -1;
+            } else {
+                nsl[i] = s.peek();
+            }
+            s.push(i);
+        }
+        // Next Smaller Right
+        s = new Stack<>(); // Stack ko khali kar diye
+        for(int i=arr.length-1; i>=0; i--) {
+            while(!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+            if(s.isEmpty()) {
+                nsr[i] = arr.length;
+            } else {
+                nsr[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        // area -- height[i] * (nsr[i] - nsl[i] - 1)
+        int maxArea2 = 0;
+        for(int i=0; i<arr.length; i++) {
+            int height = arr[i];
+            int width = nsr[i] - nsl[i] - 1;
+            int currArea = height * width;
+            maxArea2 = Math.max(currArea, maxArea2);
+        }
+        System.out.println("Max area is : "+maxArea2);
+    }
     public static void main(String[] args) {
         // Stack<Integer> s = new Stack<>();
         // s.push(1);
@@ -152,9 +196,12 @@ public class StackRevision {
         // String str = "{([)}";
         // System.out.println(parenthesis(str));
 
-        String str = "((a+b) + (c+d))"; // false
-        System.out.println(duplicate(str));
-        String str2 = "((a+b))"; // true
-        System.out.println(duplicate(str2));
+        // String str = "((a+b) + (c+d))"; // false
+        // System.out.println(duplicate(str));
+        // String str2 = "((a+b))"; // true
+        // System.out.println(duplicate(str2));
+
+        int arr[] = { 2, 1, 5, 6, 2, 3 };
+        maxArea(arr);
     }
 }
