@@ -111,6 +111,31 @@ public class StackRevision {
             return false;
         }
     }
+
+    // Duplicate Parethesis
+    public static boolean duplicate(String str) {
+        Stack<Character> s = new Stack<>();
+        for(int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // closing
+            if(ch == ')') {
+                int count = 0;
+                while(s.peek() != '(') {
+                    s.pop();
+                    count++;
+                }
+                if(count < 1) {
+                    return true; // duplicate
+                } else {
+                    s.pop(); // opening pair
+                }
+            } else {
+                s.push(ch); // opening
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         // Stack<Integer> s = new Stack<>();
         // s.push(1);
@@ -124,7 +149,12 @@ public class StackRevision {
 
         // nextGreater();
 
-        String str = "{([)}";
-        System.out.println(parenthesis(str));
+        // String str = "{([)}";
+        // System.out.println(parenthesis(str));
+
+        String str = "((a+b) + (c+d))"; // false
+        System.out.println(duplicate(str));
+        String str2 = "((a+b))"; // true
+        System.out.println(duplicate(str2));
     }
 }
