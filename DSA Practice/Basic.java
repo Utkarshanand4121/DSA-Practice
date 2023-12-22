@@ -193,6 +193,17 @@ public class Basic {
         }
         return res;
     }
+
+    static int findRemainder(int num1,int num2){
+        // code here
+        return num1 % num2;
+    }
+
+    static int mulClock(int num1, int num2) {
+        // code here
+        int res = num1 * num2;
+        return res % 12;
+    }
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter a: ");
