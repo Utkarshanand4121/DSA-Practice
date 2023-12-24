@@ -870,6 +870,20 @@ public class Array {
         }
         return trappedWater;
     }
+
+    static int isFactorial(int N) {
+        //code here
+        int res = 0;
+        int fact = 1;
+        for(int i=1; i<=N; i++) {
+            fact = fact * i;
+            if(fact == N) {
+                res = 1;
+                break;
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
 
     }
