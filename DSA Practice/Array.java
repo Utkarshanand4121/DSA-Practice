@@ -884,6 +884,17 @@ public class Array {
         }
         return res;
     }
+
+    public long[] findElements( long a[], long n)
+    {
+        // Your code goes here
+        Arrays.sort(a);
+        long res[] = new long[(int)n-2];
+        for(int i=0; i<n-2; i++) {
+            res[i] = a[i];
+        }
+        return res;
+    }
     public static void main(String[] args) {
 
     }
