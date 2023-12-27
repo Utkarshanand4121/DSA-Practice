@@ -895,6 +895,40 @@ public class Array {
         }
         return res;
     }
+
+    ArrayList<Integer> EvenOddSum(int N, int Arr[]) {
+        // code here
+        ArrayList<Integer> arr = new ArrayList<>();
+        int oddSum = 0;
+        int evenSum = 0;
+        for(int i=0; i<Arr.length; i++) {
+            if(i % 2 == 0) {
+                evenSum += Arr[i];
+            } else {
+                oddSum += Arr[i];
+            }
+        }
+        arr.add(evenSum);
+        arr.add(oddSum);
+        return arr;
+    }
+
+    static ArrayList<Integer> getSum(int N){
+        // code here
+        ArrayList<Integer> arr = new ArrayList<>();
+        int oddSum = 0;
+        int evenSum = 0;
+        for(int i=0; i<=N; i++) {
+            if(i % 2 == 0) {
+                evenSum += i;
+            } else {
+                oddSum += i;
+            }
+        }
+        arr.add(evenSum);
+        arr.add(oddSum);
+        return arr;
+    }
     public static void main(String[] args) {
 
     }
