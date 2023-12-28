@@ -929,6 +929,16 @@ public class Array {
         arr.add(oddSum);
         return arr;
     }
+
+    int missingNumber(int array[], int n) {
+        // Your Code Here
+        int sum = 0;
+        int reqSum = (n*(n+1))/2;
+        for(int i=0; i<n-1; i++) {
+            sum += array[i];
+        }
+        return reqSum - sum;
+    }
     public static void main(String[] args) {
 
     }
