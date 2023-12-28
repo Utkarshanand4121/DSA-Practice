@@ -97,8 +97,60 @@ public class HashMapRevision {
 
     }
     
+    // Find itinerary for tickets
+    public static String getStart(HashMap<String, String> tickets) {
+        HashMap<String, String> revMap = new HashMap<>();
+
+        for(String str: tickets.keySet()) {
+            revMap.put(tickets.get(str), str);
+        }
+
+        for(String str : tickets.keySet()) {
+            if(!revMap.containsKey(str)) {
+                return str;
+            }
+        }
+        return null;
+    }
+
+    public static void iterTicket() { // O(n)
+        HashMap<String, String> tickets = new HashMap<>();
+        tickets.put("Chennai", "Bengaluru");
+        tickets.put("Mumbai", "Delhi");
+        tickets.put("Goa", "Chennai");
+        tickets.put("Delhi", "Goa");
+
+        String start = getStart(tickets);
+        System.out.print(start);
+
+        for(String key : tickets.keySet()) {
+            System.out.print(" --> " + tickets.get(key));
+            start = tickets.get(key);
+        }
+    }
+
+    // Largest subarray sum with 0
+    public static void subSum() {
+        int arr[] = {15, -2, 2, -8, 1, 7, 10};
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int sum = 0;
+        int len = 0;
+        for(int i=0; i<arr.length; i++) {
+            sum += arr[i];
+            if(map.containsKey(sum)) {
+                len = Math.max(len, i - map.get(sum));
+            } else {
+                map.put(sum, i);
+            }
+        }
+
+        System.out.println("largest subarray with sum as 0 => " +len);
+    }
+
+    
     public static void main(String[] args) {
-        majorityElem();
+        // majorityElem();
         // HashMap<String, Integer> maps = new HashMap<>();
         // maps.put("india", 140);
         // maps.put("china", 148);
@@ -110,12 +162,17 @@ public class HashMapRevision {
         // String t = "acer";
         // System.out.println(isAnagram(s, t));
 
-        distinct();
-        System.out.println();
-        System.out.println("Union of two array ----> ");
-        union();
-        System.out.println();
-        System.out.println("Intersection of two array ----> ");
-        intersection();
+        // distinct();
+        // System.out.println();
+        // System.out.println("Union of two array ----> ");
+        // union();
+        // System.out.println();
+        // System.out.println("Intersection of two array ----> ");
+        // intersection();
+        // System.out.println();
+        // // Find itinerary for tickets
+        // iterTicket();
+
+        subSum();
     }
 }
