@@ -849,22 +849,22 @@ public class Array {
         return res;
     }
 
-    static long trappingWater(int arr[], int n) { 
+    static long trappingWater(int arr[], int n) {
         // Your code here
         int leftMax[] = new int[n];
         leftMax[0] = arr[0];
-        for(int i=1; i<n; i++) {
-            leftMax[i] = Math.max(arr[i], leftMax[i-1]);
+        for (int i = 1; i < n; i++) {
+            leftMax[i] = Math.max(arr[i], leftMax[i - 1]);
         }
-        
+
         int rightMax[] = new int[n];
-        rightMax[n-1] = arr[n-1];
-        for(int i=n-2; i>=0; i--) {
-            rightMax[i] = Math.max(arr[i], rightMax[i+1]);
+        rightMax[n - 1] = arr[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(arr[i], rightMax[i + 1]);
         }
-        
+
         long trappedWater = 0;
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             int waterLevel = Math.min(leftMax[i], rightMax[i]);
             trappedWater += waterLevel - arr[i];
         }
@@ -872,12 +872,12 @@ public class Array {
     }
 
     static int isFactorial(int N) {
-        //code here
+        // code here
         int res = 0;
         int fact = 1;
-        for(int i=1; i<=N; i++) {
+        for (int i = 1; i <= N; i++) {
             fact = fact * i;
-            if(fact == N) {
+            if (fact == N) {
                 res = 1;
                 break;
             }
@@ -885,12 +885,11 @@ public class Array {
         return res;
     }
 
-    public long[] findElements( long a[], long n)
-    {
+    public long[] findElements(long a[], long n) {
         // Your code goes here
         Arrays.sort(a);
-        long res[] = new long[(int)n-2];
-        for(int i=0; i<n-2; i++) {
+        long res[] = new long[(int) n - 2];
+        for (int i = 0; i < n - 2; i++) {
             res[i] = a[i];
         }
         return res;
@@ -901,8 +900,8 @@ public class Array {
         ArrayList<Integer> arr = new ArrayList<>();
         int oddSum = 0;
         int evenSum = 0;
-        for(int i=0; i<Arr.length; i++) {
-            if(i % 2 == 0) {
+        for (int i = 0; i < Arr.length; i++) {
+            if (i % 2 == 0) {
                 evenSum += Arr[i];
             } else {
                 oddSum += Arr[i];
@@ -913,13 +912,13 @@ public class Array {
         return arr;
     }
 
-    static ArrayList<Integer> getSum(int N){
+    static ArrayList<Integer> getSum(int N) {
         // code here
         ArrayList<Integer> arr = new ArrayList<>();
         int oddSum = 0;
         int evenSum = 0;
-        for(int i=0; i<=N; i++) {
-            if(i % 2 == 0) {
+        for (int i = 0; i <= N; i++) {
+            if (i % 2 == 0) {
                 evenSum += i;
             } else {
                 oddSum += i;
@@ -933,12 +932,37 @@ public class Array {
     int missingNumber(int array[], int n) {
         // Your Code Here
         int sum = 0;
-        int reqSum = (n*(n+1))/2;
-        for(int i=0; i<n-1; i++) {
+        int reqSum = (n * (n + 1)) / 2;
+        for (int i = 0; i < n - 1; i++) {
             sum += array[i];
         }
         return reqSum - sum;
     }
+
+    Boolean check(String s) {
+        // your code here
+        for (int i = 1; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            char ch2 = s.charAt(i - 1);
+            if (ch != ch2) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    int countCamelCase(String s) {
+        // your code here
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
 
     }
