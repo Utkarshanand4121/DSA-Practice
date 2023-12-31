@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Array {
@@ -963,50 +964,78 @@ public class Array {
         return count;
     }
 
-    public static int missingNumber(int A[], int N)
-    {
+    public static int missingNumber(int A[], int N) {
         // Your code goes here
-        int sum1 = (N*(N+1))/2;
+        int sum1 = (N * (N + 1)) / 2;
         int sum2 = 0;
-        for(int i = 0; i<A.length; i++) {
+        for (int i = 0; i < A.length; i++) {
             sum2 += A[i];
         }
         int res = sum1 - sum2;
         return res;
     }
 
-    public boolean possible(long arr[], long n)
-    {
-        long sum = (n*(n+1))/2;
+    public boolean possible(long arr[], long n) {
+        long sum = (n * (n + 1)) / 2;
         long sum1 = 0;
-        for(int i=0; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             sum1 += arr[i];
         }
         return sum == sum1;
     }
 
-    static String winner(int x, int m, int n, long arr[])
-    {
+    static String winner(int x, int m, int n, long arr[]) {
         // code here
         String res = "";
         int count1 = 0;
         int count2 = 0;
-        for(int i=0; i<arr.length; i++) {
-            if(arr[i] % m == 0) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % m == 0) {
                 count1++;
-            } else if(arr[i] % n == 0) {
+            } else if (arr[i] % n == 0) {
                 count2++;
-            } 
+            }
         }
-        if(count1 > count2) {
+        if (count1 > count2) {
             res = "Ram";
-        } else if(count1 == count2) {
+        } else if (count1 == count2) {
             res = "Both";
         } else {
             res = "Rohan";
         }
         return res;
     }
+
+    int getOddOccurrence(int[] arr, int n) {
+        // code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int res = 0;
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        for (Integer key : map.keySet()) {
+            if (map.get(key) % 2 != 0) {
+                res = key;
+            }
+        }
+        return res;
+    }
+
+    public static void frequencyCount(int arr[], int N, int P) {
+        // code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        Arrays.fill(arr, 0);
+        for (Integer key : map.keySet()) {
+            if (key < arr.length + 1) {
+                arr[key - 1] = map.get(key);
+            }
+
+        }
+    }
+
     public static void main(String[] args) {
 
     }
