@@ -1036,6 +1036,37 @@ public class Array {
         }
     }
 
+    public int findUnique(int a[], int n, int k)
+    {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int res = 0;
+        for(int i=0; i<a.length; i++) {
+            map.put(a[i], map.getOrDefault(a[i], 0) + 1);
+        }
+        for(Integer key : map.keySet()) {
+            if(map.get(key) % k != 0) {
+                res = key;
+            }
+        }
+        return res;
+    }
+
+    public long findDiff(long arr[], long n)
+    {
+        HashMap<Long, Long> map = new HashMap<>();
+        long res = 0;
+        for(long i=0; i<arr.length; i++) {
+            map.put(arr[(int)i], map.getOrDefault(arr[(int)i], 0L) + 1);
+        }
+        long max = Long.MIN_VALUE;
+        long min = Long.MAX_VALUE; 
+        for(Long key : map.keySet()) {
+            max = (long)Math.max(max, map.get(key));
+            min = (long)Math.min(min, map.get(key));
+        }
+        res = max - min;
+        return res;
+    }
     public static void main(String[] args) {
 
     }
