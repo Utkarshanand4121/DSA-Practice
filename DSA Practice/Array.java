@@ -1067,6 +1067,41 @@ public class Array {
         res = max - min;
         return res;
     }
+
+    long minDiff(long a[] ,int N,int K)
+    {
+        Arrays.sort(a);
+        long minDiff = Long.MAX_VALUE;
+        for(int i=0; i<=N-K; i++) {
+            minDiff = (long)Math.min(minDiff, a[i+K-1] - a[i]);
+        }
+        return minDiff;
+    }
+
+    public int minimum_difference(int[] nums)
+    {
+        // code here
+        Arrays.sort(nums);
+        int min = Integer.MAX_VALUE;
+        for(int i=1; i<nums.length; i++) {
+            min = (int)Math.min(min, nums[i] - nums[i-1]);
+        }
+        return min;
+    }
+
+    public static long minSum (int arr[], int n) {
+        //Complete the function
+        long sum = 0;
+        for(int i=1; i<n; i++) {
+            if(arr[i] <= arr[i-1]) {
+                arr[i] = arr[i-1] + 1;
+            } 
+        }
+        for(int i=0; i<n; i++) {
+            sum += (long)arr[i];
+        }
+        return sum; 
+    }
     public static void main(String[] args) {
 
     }
