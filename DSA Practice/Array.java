@@ -1102,6 +1102,39 @@ public class Array {
         }
         return sum; 
     }
+
+    public static int firstRepeated(int[] arr, int n) {
+        // Your code here
+        int res = -1;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<n; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        for(int i=0; i<n; i++) {
+            if(map.get(arr[i]) > 1) {
+                res = i+1;
+                break;
+            }
+        }
+        return res;
+    }
+
+    public int firstNonRepeating(int arr[], int n) 
+    { 
+        // Complete the function
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<n; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        for(int i=0; i<n; i++) {
+            if(map.get(arr[i]) == 1) {
+                res = arr[i];
+                break;
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
 
     }
