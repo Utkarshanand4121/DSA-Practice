@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Stacks {
     // Implementing Stack using linkedList
     class StackNode {
@@ -36,6 +38,22 @@ public class Stacks {
         top = top.next;
         return top1;
         
+    }
+
+    public String reverse(String S){
+        //code here
+        Stack<Character> s = new Stack<>();
+        StringBuilder res = new StringBuilder();
+        for(int i=0; i<S.length(); i++) {
+            char ch = S.charAt(i);
+            s.push(ch);
+        }
+        
+        while(!s.isEmpty()) {
+            char ch = s.pop();
+            res.append(ch);
+        }
+        return res.toString();
     }
     public static void main(String[] args) {
         
