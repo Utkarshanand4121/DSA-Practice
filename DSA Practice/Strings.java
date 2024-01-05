@@ -1,56 +1,55 @@
 public class Strings {
-    
-    static void printHelloWorld(){
+
+    static void printHelloWorld() {
         // code here
         System.out.print("Hello World");
     }
+
     // Important question Revise it
-    public static String reverseWord(String str)
-    {
+    public static String reverseWord(String str) {
         // Reverse the string str
         int n = str.length();
         StringBuilder reverse = new StringBuilder();
-        for(int i= n-1; i>=0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             reverse.append(str.charAt(i));
         }
         return reverse.toString();
     }
-    static String compareNum(int A, int B){
+
+    static String compareNum(int A, int B) {
         // code here
         String result;
-        if(A>B) {
-            result = A+" is greater than "+B;
-        } else if(A<B) {
-            result = A+" is less than "+B;
+        if (A > B) {
+            result = A + " is greater than " + B;
+        } else if (A < B) {
+            result = A + " is less than " + B;
         } else {
-            result = A+" is equals to "+B;
+            result = A + " is equals to " + B;
         }
         return result;
     }
 
-    
-    static String compareNM(int n,int m){
+    static String compareNM(int n, int m) {
         // code here
         String count;
-        if(n<m) {
+        if (n < m) {
             count = "lesser";
-        } else if(n>m) {
+        } else if (n > m) {
             count = "greater";
-        } else{
+        } else {
             count = "equal";
         }
         return count;
     }
-    
-    static String compareFive(int N){
+
+    static String compareFive(int N) {
         // code here
         String greater;
-        if(N>5) {
+        if (N > 5) {
             greater = "Greater than 5";
-        }
-        else if(N<5) {
+        } else if (N < 5) {
             greater = "Less than 5";
-        } else{
+        } else {
             greater = "Equal to 5";
         }
         return greater;
@@ -59,8 +58,8 @@ public class Strings {
     int isPalindrome(String S) {
         // code here
         int n = S.length();
-        for(int i=0; i<n/2; i++){
-            if(S.charAt(i) != S.charAt(n-i-1)){
+        for (int i = 0; i < n / 2; i++) {
+            if (S.charAt(i) != S.charAt(n - i - 1)) {
                 return 0;
             }
         }
@@ -68,65 +67,63 @@ public class Strings {
     }
 
     // Armstrong num
-    static String armstrongNumber(int n){
+    static String armstrongNumber(int n) {
         // code here
         int lastDigit = 0;
         int originalNum = n;
         int cb = 0;
-        while(n>0) {
-            lastDigit = n%10;
-            cb += (int) Math.pow(lastDigit,3);
-            n = n/10;
+        while (n > 0) {
+            lastDigit = n % 10;
+            cb += (int) Math.pow(lastDigit, 3);
+            n = n / 10;
         }
-        if(cb == originalNum) {
+        if (cb == originalNum) {
             return "Yes";
         } else {
             return "No";
         }
-        
+
     }
 
-    boolean isBinary(String str)
-	{
-	  //Your code here
-	  for(int i=0; i<str.length(); i++) {
-	      if(str.charAt(i) != '1' && str.charAt(i) != '0' ) {
-	          return false;
-	      }
-	  }
-	  return true;
-	  
-	}
+    boolean isBinary(String str) {
+        // Your code here
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != '1' && str.charAt(i) != '0') {
+                return false;
+            }
+        }
+        return true;
 
-    public String chartostr(char arr[], int N){
+    }
+
+    public String chartostr(char arr[], int N) {
         StringBuilder str = new StringBuilder();
-        for(int i=0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             str.append(arr[i]);
         }
         return str.toString();
     }
 
-    public String is_palindrome(int n)
-    {
+    public String is_palindrome(int n) {
         // Code here
         int lastnum;
         int reverseNum = 0;
         int originalNum = n;
-        while(n>0) {
-            lastnum = n%10;
-            reverseNum = (reverseNum*10)+lastnum;
-            n = n/10;
+        while (n > 0) {
+            lastnum = n % 10;
+            reverseNum = (reverseNum * 10) + lastnum;
+            n = n / 10;
         }
-        if(originalNum == reverseNum) {
+        if (originalNum == reverseNum) {
             return "Yes";
         } else {
             return "No";
         }
     }
 
-    public int lastIndex( String s) {
-        for(int i=s.length()-1; i>=0; i--) {
-            if(s.charAt(i) == '1') {
+    public int lastIndex(String s) {
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == '1') {
                 return i;
             }
         }
@@ -136,9 +133,9 @@ public class Strings {
     String removeVowels(String S) {
         // code here
         StringBuilder str = new StringBuilder();
-        for(int i=0; i<S.length(); i++) {
+        for (int i = 0; i < S.length(); i++) {
             char c = S.charAt(i);
-            if(c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
+            if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
                 str.append(c);
             }
         }
@@ -148,32 +145,33 @@ public class Strings {
     String removeCharacters(String S) {
         // code here
         StringBuilder str = new StringBuilder();
-        for(int i=0; i<S.length(); i++) {
+        for (int i = 0; i < S.length(); i++) {
             char c = S.charAt(i);
-            if(c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9') {
+            if (c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8'
+                    || c == '9') {
                 str.append(c);
             }
         }
         return str.toString();
     }
 
-    String modify(String S)
-    {
+    String modify(String S) {
         // your code here
         StringBuilder str = new StringBuilder();
-        for(int i=0; i<S.length(); i++) {
+        for (int i = 0; i < S.length(); i++) {
             char c = S.charAt(i);
-            if(c != ' ') {
+            if (c != ' ') {
                 str.append(c);
             }
         }
         return str.toString();
     }
+
     static String conRevstr(String S1, String S2) {
         // code here
-        String str = S1+S2;
+        String str = S1 + S2;
         StringBuilder str2 = new StringBuilder();
-        for(int i=str.length()-1; i>=0; i--) {
+        for (int i = str.length() - 1; i >= 0; i--) {
             str2.append(str.charAt(i));
         }
         return str2.toString();
@@ -183,70 +181,70 @@ public class Strings {
         // code here
         StringBuilder str = new StringBuilder();
         str.append(S.charAt(0));
-        for(int i=1; i<S.length(); i++) {
-            if(i % 2 == 0) {
+        for (int i = 1; i < S.length(); i++) {
+            if (i % 2 == 0) {
                 str.append(S.charAt(i));
             }
         }
         return str.toString();
     }
 
-    public String removeConsonants(String s)
-    {
-        //code here.
+    public String removeConsonants(String s) {
+        // code here.
         StringBuilder str = new StringBuilder();
-        for(int i=0; i<s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(ch=='a' || ch=='e'|| ch=='i'|| ch=='o'|| ch=='u' || ch=='A'|| ch=='E'|| ch=='I'|| ch=='O'|| ch=='U') {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+                    || ch == 'O' || ch == 'U') {
                 str.append(ch);
             }
         }
-        if(str.toString().equals("")) { // Remember this line clearfully
+        if (str.toString().equals("")) { // Remember this line clearfully
             return "No Vowel";
         } else {
             return str.toString();
         }
-        
+
     }
 
     String firstAlphabet(String S) {
         // code here
         StringBuilder str = new StringBuilder();
-        
+
         str.append(S.charAt(0));
-        for(int i=1; i<S.length(); i++) {
+        for (int i = 1; i < S.length(); i++) {
             char s = S.charAt(i);
-            if(s == ' ') {
-                str.append(S.charAt(i+1));
+            if (s == ' ') {
+                str.append(S.charAt(i + 1));
             }
         }
         return str.toString();
     }
 
-    public String removeConsecutiveCharacter(String S){
+    public String removeConsecutiveCharacter(String S) {
         StringBuilder str = new StringBuilder();
         str.append(S.charAt(0));
-        for(int i=1; i<S.length(); i++) {
+        for (int i = 1; i < S.length(); i++) {
             char ch = S.charAt(i);
-            if(ch != S.charAt(i-1)) {
+            if (ch != S.charAt(i - 1)) {
                 str.append(ch);
             }
         }
         return str.toString();
     }
 
-    public String modify2(String s){
+    public String modify2(String s) {
         char ch = s.charAt(0);
-        if(Character.isUpperCase(ch)) { // Remember this line
+        if (Character.isUpperCase(ch)) { // Remember this line
             return s.toUpperCase();
         }
         return s.toLowerCase();
     }
 
-    int LastIndex(String s, char p){
+    int LastIndex(String s, char p) {
         // code here
-        for(int i = s.length()-1; i>=0; i--) {
-            if(s.charAt(i) == p) {
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == p) {
                 return i;
             }
         }
@@ -254,43 +252,41 @@ public class Strings {
     }
 
     static int RedOrGreen(int N, String S) {
-        //code here
+        // code here
         int count1 = 0;
         int count2 = 0;
-        for(int i=0; i<S.length(); i++) {
+        for (int i = 0; i < S.length(); i++) {
             char ch = S.charAt(i);
-            if(ch == 'R') {
+            if (ch == 'R') {
                 count1++;
-            } else{
+            } else {
                 count2++;
             }
         }
-        int res = (int)Math.min(count1, count2);
+        int res = (int) Math.min(count1, count2);
         return res;
     }
 
-    public int penaltyScore(String S)
-    {
+    public int penaltyScore(String S) {
         // Your code goes here
         int count = 0;
-        for(int i=S.length()-1; i>0; i--) {
+        for (int i = S.length() - 1; i > 0; i--) {
             char ch = S.charAt(i);
-            char ch1 = S.charAt(i-1);
-            if(ch == '1' && ch1 == '2') {
+            char ch1 = S.charAt(i - 1);
+            if (ch == '1' && ch1 == '2') {
                 count++;
             }
         }
         return count;
     }
 
-    String isGoodString(String s) 
-    { 
+    String isGoodString(String s) {
         // code here
         String str = "YES";
-        for(int i=s.length()-1; i>0; i--) {
+        for (int i = s.length() - 1; i > 0; i--) {
             char ch = s.charAt(i);
-            char ch1 = s.charAt(i-1);
-            if(ch == ch1) {
+            char ch1 = s.charAt(i - 1);
+            if (ch == ch1) {
                 str = "NO";
             }
         }
@@ -300,12 +296,31 @@ public class Strings {
     static String revStr(String S) {
         // code here
         StringBuilder str = new StringBuilder();
-        for(int i=S.length()-1; i>=0; i--) {
+        for (int i = S.length() - 1; i >= 0; i--) {
             char ch = S.charAt(i);
             str.append(ch);
         }
         return str.toString();
     }
+
+    int[] arrayForm(int a, int b, int c) {
+        // code here
+        int arr[] = new int[3];
+        arr[0] = a;
+        arr[1] = b;
+        arr[2] = c;
+        return arr;
+    }
+
+    String stringForm(int a, int b, int c) {
+        // code here
+        StringBuilder str = new StringBuilder();
+        str.append(a);
+        str.append(b);
+        str.append(c);
+        return str.toString();
+    }
+
     public static void main(String[] args) {
 
     }
