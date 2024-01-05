@@ -1135,6 +1135,30 @@ public class Array {
         }
         return res;
     }
+
+    public static void convertToWave(int n, int[] a) {
+        // code here
+        for(int i=0; i<n-1; i+=2) {
+            int temp = a[i];
+            a[i] = a[i+1];
+            a[i+1] = temp;
+        }
+    }
+
+    public void threeWayPartition(int array[], int a, int b)
+    {
+        // code here 
+        Arrays.sort(array);
+        for(int i=0; i<array.length; i++) {
+            if(array[i] <= a) {
+                array[i] = array[i];
+            } else if(array[i] <a && array[i]>b) {
+                array[i] = array[i];
+            } else {
+                array[i] = array[i];
+            }
+        }
+    }
     public static void main(String[] args) {
 
     }
