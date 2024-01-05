@@ -296,6 +296,16 @@ public class Strings {
         }
         return str;
     }
+
+    static String revStr(String S) {
+        // code here
+        StringBuilder str = new StringBuilder();
+        for(int i=S.length()-1; i>=0; i--) {
+            char ch = S.charAt(i);
+            str.append(ch);
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
 
     }
