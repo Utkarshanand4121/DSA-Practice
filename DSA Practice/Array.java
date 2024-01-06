@@ -1036,99 +1036,94 @@ public class Array {
         }
     }
 
-    public int findUnique(int a[], int n, int k)
-    {
+    public int findUnique(int a[], int n, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int res = 0;
-        for(int i=0; i<a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             map.put(a[i], map.getOrDefault(a[i], 0) + 1);
         }
-        for(Integer key : map.keySet()) {
-            if(map.get(key) % k != 0) {
+        for (Integer key : map.keySet()) {
+            if (map.get(key) % k != 0) {
                 res = key;
             }
         }
         return res;
     }
 
-    public long findDiff(long arr[], long n)
-    {
+    public long findDiff(long arr[], long n) {
         HashMap<Long, Long> map = new HashMap<>();
         long res = 0;
-        for(long i=0; i<arr.length; i++) {
-            map.put(arr[(int)i], map.getOrDefault(arr[(int)i], 0L) + 1);
+        for (long i = 0; i < arr.length; i++) {
+            map.put(arr[(int) i], map.getOrDefault(arr[(int) i], 0L) + 1);
         }
         long max = Long.MIN_VALUE;
-        long min = Long.MAX_VALUE; 
-        for(Long key : map.keySet()) {
-            max = (long)Math.max(max, map.get(key));
-            min = (long)Math.min(min, map.get(key));
+        long min = Long.MAX_VALUE;
+        for (Long key : map.keySet()) {
+            max = (long) Math.max(max, map.get(key));
+            min = (long) Math.min(min, map.get(key));
         }
         res = max - min;
         return res;
     }
 
-    long minDiff(long a[] ,int N,int K)
-    {
+    long minDiff(long a[], int N, int K) {
         Arrays.sort(a);
         long minDiff = Long.MAX_VALUE;
-        for(int i=0; i<=N-K; i++) {
-            minDiff = (long)Math.min(minDiff, a[i+K-1] - a[i]);
+        for (int i = 0; i <= N - K; i++) {
+            minDiff = (long) Math.min(minDiff, a[i + K - 1] - a[i]);
         }
         return minDiff;
     }
 
-    public int minimum_difference(int[] nums)
-    {
+    public int minimum_difference(int[] nums) {
         // code here
         Arrays.sort(nums);
         int min = Integer.MAX_VALUE;
-        for(int i=1; i<nums.length; i++) {
-            min = (int)Math.min(min, nums[i] - nums[i-1]);
+        for (int i = 1; i < nums.length; i++) {
+            min = (int) Math.min(min, nums[i] - nums[i - 1]);
         }
         return min;
     }
 
-    public static long minSum (int arr[], int n) {
-        //Complete the function
+    public static long minSum(int arr[], int n) {
+        // Complete the function
         long sum = 0;
-        for(int i=1; i<n; i++) {
-            if(arr[i] <= arr[i-1]) {
-                arr[i] = arr[i-1] + 1;
-            } 
+        for (int i = 1; i < n; i++) {
+            if (arr[i] <= arr[i - 1]) {
+                arr[i] = arr[i - 1] + 1;
+            }
         }
-        for(int i=0; i<n; i++) {
-            sum += (long)arr[i];
+        for (int i = 0; i < n; i++) {
+            sum += (long) arr[i];
         }
-        return sum; 
+        return sum;
     }
 
     public static int firstRepeated(int[] arr, int n) {
         // Your code here
         int res = -1;
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
-        for(int i=0; i<n; i++) {
-            if(map.get(arr[i]) > 1) {
-                res = i+1;
+        for (int i = 0; i < n; i++) {
+            if (map.get(arr[i]) > 1) {
+                res = i + 1;
                 break;
             }
         }
         return res;
     }
 
-    public int firstNonRepeating(int arr[], int n) 
-    { 
+    public int firstNonRepeating(int arr[], int n) {
         // Complete the function
         int res = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
-        for(int i=0; i<n; i++) {
-            if(map.get(arr[i]) == 1) {
+        for (int i = 0; i < n; i++) {
+            if (map.get(arr[i]) == 1) {
                 res = arr[i];
                 break;
             }
@@ -1138,27 +1133,59 @@ public class Array {
 
     public static void convertToWave(int n, int[] a) {
         // code here
-        for(int i=0; i<n-1; i+=2) {
+        for (int i = 0; i < n - 1; i += 2) {
             int temp = a[i];
-            a[i] = a[i+1];
-            a[i+1] = temp;
+            a[i] = a[i + 1];
+            a[i + 1] = temp;
         }
     }
 
-    public void threeWayPartition(int array[], int a, int b)
-    {
-        // code here 
+    public void threeWayPartition(int array[], int a, int b) {
+        // code here
         Arrays.sort(array);
-        for(int i=0; i<array.length; i++) {
-            if(array[i] <= a) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] <= a) {
                 array[i] = array[i];
-            } else if(array[i] <a && array[i]>b) {
+            } else if (array[i] < a && array[i] > b) {
                 array[i] = array[i];
             } else {
                 array[i] = array[i];
             }
         }
     }
+
+    public static int search(int A[], int N) {
+        // your code here
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < N; i++) {
+            map.put(A[i], map.getOrDefault(A[i], 0) + 1);
+        }
+
+        for (Integer key : map.keySet()) {
+            if (map.get(key) == 1) {
+                res = key;
+            }
+        }
+        return res;
+    }
+
+    static int majorityElement(int a[], int size) {
+        // your code here
+        int res = -1;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < size; i++) {
+            map.put(a[i], map.getOrDefault(a[i], 0) + 1);
+        }
+
+        for (Integer key : map.keySet()) {
+            if (map.get(key) > size / 2) {
+                res = key;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
