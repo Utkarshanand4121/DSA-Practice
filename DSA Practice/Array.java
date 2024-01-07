@@ -1192,6 +1192,25 @@ public class Array {
         return arr[k - 1];
     }
 
+    public void scores(long a[], long b[]) {
+        // store the answer as
+        // GFG.ca=3;
+        // GFG.cb=5;
+        // Your code goes here
+        long A = 0;
+        long B = 0;
+        for(int i=0; i<b.length; i++) {
+            if(a[i] > b[i]) {
+                A++;
+            } else if(a[i] < b[i]) {
+                B++;
+            } else {
+                continue;
+            }
+            GFG.ca = A;
+            GFG.cb = B;
+        }
+    }
     public static void main(String[] args) {
 
     }
