@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Strings {
 
     static void printHelloWorld() {
@@ -319,6 +321,28 @@ public class Strings {
         str.append(b);
         str.append(c);
         return str.toString();
+    }
+
+    char firstRep(String S) {
+        // your code here
+        HashMap<Character, Integer> map = new HashMap<>();
+        char res = '\0';
+        for (int i = 0; i < S.length(); i++) {
+            char ch = S.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        for (int i = 0; i < S.length(); i++) {
+            char ch = S.charAt(i);
+            if (map.get(ch) > 1) {
+                res = ch;
+                break;
+            }
+        }
+        if (res == '\0') {
+            return '#';
+        }
+        return res;
     }
 
     public static void main(String[] args) {
