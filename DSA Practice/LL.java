@@ -88,6 +88,56 @@ public class LL {
         return head.data;
     }
 
+    public static int getNth(Node node, int ind)
+    {
+       //Your code here
+       Node temp = node;
+       int sz = 0;
+       while(temp != null) {
+           sz++;
+           if(sz == ind) {
+               return temp.data;
+           }
+           temp = temp.next;
+       }
+       return -1;
+    }
+
+    int isLengthEvenorOdd(Node head1)
+	{
+	    //Add your code here.
+	    Node temp = head1;
+	    int sz = 0;
+	    while(temp != null) {
+	        sz++;
+	        temp = temp.next;
+	    }
+	    if(sz % 2 == 0) {
+	        return 0;
+	    } 
+	    return 1;
+	}
+
+    public int sum(Node head, int k){
+        //write code here
+        Node temp = head;
+        int sz = 0;
+        while(temp != null) {
+            sz++;
+            temp = temp.next;
+        }
+        temp = head;
+        int sz1 = 0;
+        int sum = 0;
+        while(temp != null) {
+            sz1++;
+            if(sz1 >= sz - k + 1) {
+                sum += temp.data;
+            }
+            temp = temp.next;
+        }
+        return sum;
+    }
     public static void main(String[] args) {
 
     }
