@@ -140,6 +140,17 @@ public class ArrayLists {
         }
         return res;
     }
+
+    public static ArrayList<Integer> kLargest(int arr[], int n, int k)
+    {
+        // code here 
+        ArrayList<Integer> res = new ArrayList<>();
+        Arrays.sort(arr);
+        for(int i=n-1; i>n-k-1; i--) {
+            res.add(arr[i]);
+        }
+        return res;
+    }
     public static void main(String[] args) {
         
     }
