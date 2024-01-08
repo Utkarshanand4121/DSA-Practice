@@ -124,6 +124,22 @@ public class ArrayLists {
         }
         return res;
     }
+
+    ArrayList<Long> findMissing(long A[], long B[], int N, int M)
+    {
+        ArrayList<Long> res = new ArrayList<>();
+        HashMap<Long,Long> map = new HashMap<>();
+        for(int i=0; i<M; i++) {
+            map.put(B[i], map.getOrDefault(B[i], 0L) + 1);
+        }
+        
+        for(int i=0; i<N; i++) {
+            if(!map.containsKey(A[i])) {
+                res.add(A[i]);
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
         
     }
