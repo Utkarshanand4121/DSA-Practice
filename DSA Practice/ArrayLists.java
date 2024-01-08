@@ -151,6 +151,29 @@ public class ArrayLists {
         }
         return res;
     }
+
+    ArrayList<Long> arranged(long a[], int n)
+    {
+        long[] posArr = new long[(int)n/2];
+        long[] negArr = new long[(int)n/2];
+        int poIdx = 0;
+        int neIdx = 0;
+        for(int i=0; i<n; i++) {
+            if((int)a[i] > 0) {
+                posArr[poIdx] = a[i];
+                poIdx++;
+            } else {
+                negArr[neIdx] = a[i];
+                neIdx++;
+            }
+        }
+        ArrayList<Long> res = new ArrayList<Long>();
+        for(int i=0; i<n/2; i++) {
+            res.add(posArr[i]);
+            res.add(negArr[i]);
+        }
+        return res;
+    }
     public static void main(String[] args) {
         
     }
