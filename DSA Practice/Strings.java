@@ -366,6 +366,23 @@ public class Strings {
         }
         return res;
     }
+
+    public static String PartyType( long a[], int n)
+    {
+        // Your code goes here
+        String res = "GIRLS";
+        HashMap<Long, Long> map = new HashMap<>();
+        for(int i=0; i<n; i++) {
+            map.put(a[i], map.getOrDefault(a[i], 0L) + 1);
+        }
+        for(int i=0; i<n; i++) {
+            if(map.get(a[i]) > 1) {
+                res = "BOYS";
+                break;
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
 
     }
