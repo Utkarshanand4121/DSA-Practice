@@ -1211,6 +1211,22 @@ public class Array {
             GFG.cb = B;
         }
     }
+
+    int remove_duplicate(int A[],int N){
+        // code here
+        if(N==0 || N==1) {
+            return N;
+        }
+        int idx = 0;
+        for(int i=0; i<N-1; i++) {
+            if(A[i] != A[i+1]) {
+                A[idx] = A[i];
+                idx++;
+            }
+        }
+        A[idx++] = A[N-1];
+        return idx;
+    }
     public static void main(String[] args) {
 
     }
