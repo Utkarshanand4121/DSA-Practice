@@ -1227,6 +1227,25 @@ public class Array {
         A[idx++] = A[N-1];
         return idx;
     }
+
+    public static void Rearrange(int a[], int n, int answer[])
+    {
+        Arrays.sort(a);
+        int start = 0;
+        int end = n-1;
+        int i = 0;
+        while(start <= end) {
+            answer[i] = a[start];
+            i++;
+            if(start != end) {
+                answer[i] = a[end];
+                i++;
+            }
+            start++;
+            end--;
+        }
+        
+    }
     public static void main(String[] args) {
 
     }

@@ -160,7 +160,35 @@ public class LL {
         return temp.data;
     }
 
-    
+    Node insertAtBeginning(Node head, int x) {
+        // code here
+        Node newNode = new Node(x);
+        if (head == null) {
+            head = newNode;
+            return head;
+        }
+        newNode.next = head;
+        head = newNode;
+        return head;
+    }
+
+    // Function to insert a node at the end of the linked list.
+    Node insertAtEnd(Node head, int x) {
+        // code here
+        Node newNode = new Node(x);
+        if (head == null) {
+            head = newNode;
+            return head;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        newNode.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
 
     }

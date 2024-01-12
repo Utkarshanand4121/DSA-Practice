@@ -383,6 +383,24 @@ public class Strings {
         }
         return res;
     }
+
+    public String transform(String s)
+    {
+        // code here
+        StringBuilder res = new StringBuilder();
+        char ch2 = s.charAt(0);
+        res.append(Character.toUpperCase(ch2));
+        for(int i=0; i<s.length()-1; i++) {
+            char ch = s.charAt(i);
+            char ch1 = s.charAt(i+1);
+            if(ch == ' ') {
+                res.append(Character.toUpperCase(ch1));
+            } else {
+                res.append(ch1);
+            }
+        }
+        return res.toString();
+    }
     public static void main(String[] args) {
 
     }
