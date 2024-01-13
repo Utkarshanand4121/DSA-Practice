@@ -189,6 +189,36 @@ public class LL {
         return head;
     }
 
+    public Node insertInMid(Node head, int data){
+        //Insert code here, return the head of modified linked list
+        Node newNode = new Node(data);
+        if(head == null) {
+            head = newNode;
+            return head;
+        }
+        Node temp = head;
+        int sz = 0;
+        while(temp != null) {
+            sz++;
+            temp = temp.next;
+        }
+        temp = head;
+        int sz1 = 0;
+        while(temp != null) {
+            sz1++;
+            if((sz1 == sz/2) && (sz % 2 == 0)) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                break;
+            } else if((sz1 == sz/2 + 1) && (sz % 2 != 0)) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                break;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
     public static void main(String[] args) {
 
     }

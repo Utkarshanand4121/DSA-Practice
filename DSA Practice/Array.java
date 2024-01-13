@@ -1199,10 +1199,10 @@ public class Array {
         // Your code goes here
         long A = 0;
         long B = 0;
-        for(int i=0; i<b.length; i++) {
-            if(a[i] > b[i]) {
+        for (int i = 0; i < b.length; i++) {
+            if (a[i] > b[i]) {
                 A++;
-            } else if(a[i] < b[i]) {
+            } else if (a[i] < b[i]) {
                 B++;
             } else {
                 continue;
@@ -1212,40 +1212,63 @@ public class Array {
         }
     }
 
-    int remove_duplicate(int A[],int N){
+    int remove_duplicate(int A[], int N) {
         // code here
-        if(N==0 || N==1) {
+        if (N == 0 || N == 1) {
             return N;
         }
         int idx = 0;
-        for(int i=0; i<N-1; i++) {
-            if(A[i] != A[i+1]) {
+        for (int i = 0; i < N - 1; i++) {
+            if (A[i] != A[i + 1]) {
                 A[idx] = A[i];
                 idx++;
             }
         }
-        A[idx++] = A[N-1];
+        A[idx++] = A[N - 1];
         return idx;
     }
 
-    public static void Rearrange(int a[], int n, int answer[])
-    {
+    public static void Rearrange(int a[], int n, int answer[]) {
         Arrays.sort(a);
         int start = 0;
-        int end = n-1;
+        int end = n - 1;
         int i = 0;
-        while(start <= end) {
+        while (start <= end) {
             answer[i] = a[start];
             i++;
-            if(start != end) {
+            if (start != end) {
                 answer[i] = a[end];
                 i++;
             }
             start++;
             end--;
         }
-        
+
     }
+
+    public void segregateElements(int arr[], int n) {
+        // Your code goes here
+        int temp[] = new int[n];
+        int idx = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] >= 0) {
+                temp[idx] = arr[i];
+                idx++;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (arr[i] < 0) {
+                temp[idx] = arr[i];
+                idx++;
+            }
+        }
+        int j = 0;
+        for (int i = 0; i < n; i++) {
+            arr[j] = temp[i];
+            j++;
+        }
+    }
+
     public static void main(String[] args) {
 
     }

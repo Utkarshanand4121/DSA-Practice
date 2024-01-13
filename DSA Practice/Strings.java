@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Strings {
 
@@ -345,38 +346,36 @@ public class Strings {
         return res;
     }
 
-    static char nonrepeatingCharacter(String S)
-    {
-        //Your code here
+    static char nonrepeatingCharacter(String S) {
+        // Your code here
         HashMap<Character, Integer> map = new HashMap<>();
-        for(int i=0; i<S.length(); i++) {
+        for (int i = 0; i < S.length(); i++) {
             char ch = S.charAt(i);
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
         char res = '\0';
-        for(int i=0; i<S.length(); i++) {
+        for (int i = 0; i < S.length(); i++) {
             char ch = S.charAt(i);
-            if(map.get(ch) == 1) {
+            if (map.get(ch) == 1) {
                 res = ch;
                 break;
             }
         }
-        if(res == '\0') {
+        if (res == '\0') {
             return '$';
         }
         return res;
     }
 
-    public static String PartyType( long a[], int n)
-    {
+    public static String PartyType(long a[], int n) {
         // Your code goes here
         String res = "GIRLS";
         HashMap<Long, Long> map = new HashMap<>();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             map.put(a[i], map.getOrDefault(a[i], 0L) + 1);
         }
-        for(int i=0; i<n; i++) {
-            if(map.get(a[i]) > 1) {
+        for (int i = 0; i < n; i++) {
+            if (map.get(a[i]) > 1) {
                 res = "BOYS";
                 break;
             }
@@ -384,20 +383,51 @@ public class Strings {
         return res;
     }
 
-    public String transform(String s)
-    {
+    public String transform(String s) {
         // code here
         StringBuilder res = new StringBuilder();
         char ch2 = s.charAt(0);
         res.append(Character.toUpperCase(ch2));
-        for(int i=0; i<s.length()-1; i++) {
+        for (int i = 0; i < s.length() - 1; i++) {
             char ch = s.charAt(i);
-            char ch1 = s.charAt(i+1);
-            if(ch == ' ') {
+            char ch1 = s.charAt(i + 1);
+            if (ch == ' ') {
                 res.append(Character.toUpperCase(ch1));
             } else {
                 res.append(ch1);
             }
+        }
+        return res.toString();
+    }
+
+    static String removeChars(String string1, String string2) {
+        // code here
+        HashSet<Character> set = new HashSet<>();
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < string2.length(); i++) {
+            char ch = string2.charAt(i);
+            set.add(ch);
+        }
+        for (int i = 0; i < string1.length(); i++) {
+            char ch = string1.charAt(i);
+            if (!set.contains(ch)) {
+                res.append(ch);
+            }
+        }
+        return res.toString();
+    }
+
+    String removeSpecialCharacter(String s) {
+        // code here
+        StringBuilder res = new StringBuilder();
+        for(int i=0; i<s.length(); i++) {
+            char ch = s.charAt(i);
+            if(((ch >= 'a') && (ch <= 'z')) || ((ch >= 'A') && (ch <= 'Z'))) {
+                res.append(ch);
+            }
+        }
+        if(res.toString().isEmpty()) {
+            return "-1";
         }
         return res.toString();
     }
