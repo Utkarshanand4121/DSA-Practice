@@ -78,6 +78,25 @@ public class Stacks {
         }
     }
 
+    // NextGreater Element
+    public static long[] nextLargerElement(long[] arr, int n)
+    { 
+        // Your code here
+        Stack<Long> s = new Stack<>();
+        long nextGreater[] = new long[n];
+        for(int i=n-1; i>=0; i--) {
+            while((!s.isEmpty()) && (arr[s.peek().intValue()] <= arr[i])) {
+                s.pop();
+            }
+            if(s.isEmpty()) {
+                nextGreater[i] = -1;
+            } else {
+                nextGreater[i] = arr[s.peek().intValue()];
+            }
+            s.push((long)i);
+        }
+        return nextGreater;
+    } 
     public static void main(String[] args) {
 
     }

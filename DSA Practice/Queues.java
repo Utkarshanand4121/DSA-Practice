@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -50,6 +51,25 @@ public class Queues {
 		front = front + 1;
 		return x;
 	} 
+
+	public Queue<Integer> modifyQueue(Queue<Integer> q, int k) {
+        // add code here.
+        Stack<Integer> s = new Stack<>();
+        for(int i=0; i<k; i++) {
+            s.push(q.remove());
+        }
+        Queue<Integer> q1 = new LinkedList<>();
+        while(!q.isEmpty()) {
+            q1.add(q.remove());
+        }
+        while(!s.isEmpty()) {
+            q.add(s.pop());
+        }
+        while(!q1.isEmpty()) {
+            q.add(q1.remove());
+        }
+        return q;
+    }
     public static void main(String[] args) {
         
     }
