@@ -1290,6 +1290,18 @@ public class Array {
         return res;
     }
 
+    void reverseSubArray(int arr[], int n, int l, int r) {
+        // code here
+        int start = l-1;
+        int end = r-1;
+        while(start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
     public static void main(String[] args) {
 
     }
