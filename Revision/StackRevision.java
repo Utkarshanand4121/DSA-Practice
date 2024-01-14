@@ -26,7 +26,7 @@ public class StackRevision {
 
     // push at bootom
     public static void pushAtBottom(Stack<Integer> s, int data) {
-        if (s.isEmpty()) {
+        if(s.isEmpty()) {
             s.push(data);
             return;
         }
@@ -39,14 +39,13 @@ public class StackRevision {
     public static String reverseString(String str) {
         Stack<Character> s = new Stack<>();
         StringBuilder res = new StringBuilder();
-        int idx = 0;
-        while (idx != str.length()) {
-            s.push(str.charAt(idx));
-            idx++;
+
+        for(int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+            s.push(ch);
         }
-        while (!s.isEmpty()) {
-            char ch = s.pop();
-            res.append(ch);
+        while(!s.isEmpty()) {
+            res.append(s.pop());
         }
         return res.toString();
     }
@@ -74,18 +73,18 @@ public class StackRevision {
         int nextGre[] = new int[arr.length];
 
         for(int i=arr.length-1; i>=0; i--) {
-            // 1- while
+            // while loop
             while(!s.isEmpty() && arr[s.peek()] <= arr[i]) {
                 s.pop();
             }
-            // 2- next Greater element
+            // nextGreater
             if(s.isEmpty()) {
                 nextGre[i] = -1;
             } else {
                 nextGre[i] = arr[s.peek()];
             }
-            // 3- push in s
-            s.push(i);
+            // push element
+            s.push(arr[i]);
         }
         for(int i=0; i<nextGre.length; i++) {
             System.out.print(nextGre[i] + " ");
@@ -188,12 +187,14 @@ public class StackRevision {
         // // printStack(s);
         // reverse(s);
         // printStack(s);
-
+        // pushAtBottom(s, 10);
+        // printStack(s);
         // System.out.println(reverseString("abc"));
 
-        // nextGreater();
+        // System.out.println(reverseString("abc"));
+        nextGreater();
 
-        // String str = "{([)}";
+        // String str = "()";
         // System.out.println(parenthesis(str));
 
         // String str = "((a+b) + (c+d))"; // false
@@ -201,7 +202,7 @@ public class StackRevision {
         // String str2 = "((a+b))"; // true
         // System.out.println(duplicate(str2));
 
-        int arr[] = { 2, 1, 5, 6, 2, 3 };
-        maxArea(arr);
+        // int arr[] = { 2, 1, 5, 6, 2, 3 };
+        // maxArea(arr);
     }
 }
