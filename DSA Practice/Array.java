@@ -1302,6 +1302,37 @@ public class Array {
             end--;
         }
     }
+
+    public void transpose(int n,int a[][])
+    {
+        int res[][] = new int[n][n];
+        for(int i=0; i<a.length; i++) {
+            for(int j=0; j<a[0].length; j++) {
+                res[j][i] = a[i][j];
+            }
+        }
+        for(int i=0; i<a.length; i++) {
+            for(int j=0; j<a[0].length; j++) {
+                a[i][j] = res[i][j];
+            }
+        }
+    }
+
+    static void rotateby90(int matrix[][], int n) 
+    { 
+        // code here
+        int res[][] = new int[n][n];
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                res[n-i-1][j] = matrix[j][i];
+            }
+        }
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                matrix[i][j] = res[i][j];
+            }
+        }
+    }
     public static void main(String[] args) {
 
     }
