@@ -111,6 +111,26 @@ public class StackRevision {
         }
     }
 
+    // Stock span problem
+    public static void stockSpan(int stocks[], int span[]) {
+        Stack<Integer> s = new Stack<>();
+        span[0] = 1;
+        s.push(0);
+
+        for(int i=0; i<stocks.length; i++) {
+            int curr = stocks[i];
+            while (!s.isEmpty() && curr > stocks[s.peek()]) {
+                s.pop();
+            }
+            if(s.isEmpty()) {
+                span[i] = 1;
+            } else {
+                int preHigh = s.peek();
+                span[i] = i - preHigh;
+            }
+            s.push(i);
+        }
+    }
     // Duplicate Parethesis
     public static boolean duplicate(String str) {
         Stack<Character> s = new Stack<>();
