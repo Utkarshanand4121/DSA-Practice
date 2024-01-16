@@ -1292,9 +1292,9 @@ public class Array {
 
     void reverseSubArray(int arr[], int n, int l, int r) {
         // code here
-        int start = l-1;
-        int end = r-1;
-        while(start < end) {
+        int start = l - 1;
+        int end = r - 1;
+        while (start < end) {
             int temp = arr[start];
             arr[start] = arr[end];
             arr[end] = temp;
@@ -1303,36 +1303,65 @@ public class Array {
         }
     }
 
-    public void transpose(int n,int a[][])
-    {
+    public void transpose(int n, int a[][]) {
         int res[][] = new int[n][n];
-        for(int i=0; i<a.length; i++) {
-            for(int j=0; j<a[0].length; j++) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
                 res[j][i] = a[i][j];
             }
         }
-        for(int i=0; i<a.length; i++) {
-            for(int j=0; j<a[0].length; j++) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
                 a[i][j] = res[i][j];
             }
         }
     }
 
-    static void rotateby90(int matrix[][], int n) 
-    { 
+    static void rotateby90(int matrix[][], int n) {
         // code here
         int res[][] = new int[n][n];
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++) {
-                res[n-i-1][j] = matrix[j][i];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                res[n - i - 1][j] = matrix[j][i];
             }
         }
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 matrix[i][j] = res[i][j];
             }
         }
     }
+
+    public int[] mergeHeaps(int[] a, int[] b, int n, int m) {
+        // your code here
+        int res[] = new int[n + m];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while ((i != a.length) && (j != b.length)) {
+            if (a[i] > b[j]) {
+                res[k] = a[i];
+                i++;
+                k++;
+            } else {
+                res[k] = b[j];
+                j++;
+                k++;
+            }
+        }
+        while (i != a.length) {
+            res[k] = a[i];
+            k++;
+            i++;
+        }
+        while (j != b.length) {
+            res[k] = b[j];
+            k++;
+            j++;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }

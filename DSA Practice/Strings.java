@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class Strings {
 
@@ -367,6 +368,47 @@ public class Strings {
         return res;
     }
 
+    String merge(String S1, String S2) {
+        // code here
+        StringBuilder res = new StringBuilder();
+        int i = 0;
+        int j = 0;
+        while ((i != S1.length()) && (j != S2.length())) {
+            char ch = S1.charAt(i);
+            char ch1 = S2.charAt(j);
+            res.append(ch);
+            i++;
+            if (j != S2.length()) {
+                res.append(ch1);
+                j++;
+            }
+        }
+        while (i != S1.length()) {
+            char ch3 = S1.charAt(i);
+            res.append(ch3);
+            i++;
+        }
+        while (j != S2.length()) {
+            char ch4 = S2.charAt(j);
+            res.append(ch4);
+            j++;
+        }
+        return res.toString();
+    }
+
+    String removeDuplicates(String str) {
+        // code here
+        LinkedHashSet<Character> set = new LinkedHashSet<>();
+        StringBuilder res = new StringBuilder();
+        for(int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+            set.add(ch);
+        }
+        for(Character ch : set) {
+            res.append(ch);
+        }
+        return res.toString();
+    }
     public static String PartyType(long a[], int n) {
         // Your code goes here
         String res = "GIRLS";
@@ -420,17 +462,18 @@ public class Strings {
     String removeSpecialCharacter(String s) {
         // code here
         StringBuilder res = new StringBuilder();
-        for(int i=0; i<s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(((ch >= 'a') && (ch <= 'z')) || ((ch >= 'A') && (ch <= 'Z'))) {
+            if (((ch >= 'a') && (ch <= 'z')) || ((ch >= 'A') && (ch <= 'Z'))) {
                 res.append(ch);
             }
         }
-        if(res.toString().isEmpty()) {
+        if (res.toString().isEmpty()) {
             return "-1";
         }
         return res.toString();
     }
+
     public static void main(String[] args) {
 
     }
