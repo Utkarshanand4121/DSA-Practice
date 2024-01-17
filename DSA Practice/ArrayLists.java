@@ -196,6 +196,30 @@ public class ArrayLists {
         return res;
     }
 
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) {
+        // code here
+        ArrayList<Integer> res = new ArrayList<>();
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> set1 = new HashSet<>();
+        for (int i = 0; i < n1; i++) {
+            set.add(A[i]);
+        }
+        for (int i = 0; i < n2; i++) {
+            if (set.contains(B[i])) {
+                set1.add(B[i]);
+            }
+        }
+        for (int i = 0; i < n3; i++) {
+            if (set1.contains(C[i]) && !res.contains(C[i])) {
+                res.add(C[i]);
+            }
+        }
+        if (res.isEmpty()) {
+            res.add(-1);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }

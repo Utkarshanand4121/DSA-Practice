@@ -400,15 +400,16 @@ public class Strings {
         // code here
         LinkedHashSet<Character> set = new LinkedHashSet<>();
         StringBuilder res = new StringBuilder();
-        for(int i=0; i<str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             set.add(ch);
         }
-        for(Character ch : set) {
+        for (Character ch : set) {
             res.append(ch);
         }
         return res.toString();
     }
+
     public static String PartyType(long a[], int n) {
         // Your code goes here
         String res = "GIRLS";
@@ -470,6 +471,31 @@ public class Strings {
         }
         if (res.toString().isEmpty()) {
             return "-1";
+        }
+        return res.toString();
+    }
+
+    String modify(String s) {
+        // your code here
+        StringBuilder vow = new StringBuilder();
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                vow.append(ch);
+            }
+        }
+        vow.toString();
+        int n = vow.length() - 1;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                char ch1 = vow.charAt(n);
+                res.append(ch1);
+                n--;
+            } else {
+                res.append(ch);
+            }
         }
         return res.toString();
     }

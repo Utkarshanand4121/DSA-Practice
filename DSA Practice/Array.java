@@ -1362,6 +1362,48 @@ public class Array {
         return res;
     }
 
+    public static int matSearch(int mat[][], int N, int M, int X) {
+        // your code here
+        int rows = 0;
+        int col = mat[0].length - 1;
+        while (rows < mat.length && col >= 0) {
+            if (mat[rows][col] == X) {
+                return 1;
+            } else if (X < mat[rows][col]) {
+                col--;
+            } else {
+                rows++;
+            }
+        }
+        return 0;
+    }
+
+    int[] count(String s) {
+        // your code here
+        int res[] = new int[4];
+        int low = 0;
+        int upp = 0;
+        int spe = 0;
+        int num = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch >= 'a' && ch <= 'z') {
+                low++;
+            } else if (ch >= 'A' && ch <= 'Z') {
+                upp++;
+            } else if (ch >= '0' && ch <= '9') {
+                num++;
+            } else {
+                spe++;
+            }
+        }
+        res[0] = upp;
+        res[1] = low;
+        res[2] = num;
+        res[3] = spe;
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
