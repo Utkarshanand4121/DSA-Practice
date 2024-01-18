@@ -1458,6 +1458,11 @@ public class Array {
         }
     }
 
+    static int oppositeFaceOfDice(int N) {
+        // code here
+        return (7 - N);
+    }
+
     public static void main(String[] args) {
 
     }
