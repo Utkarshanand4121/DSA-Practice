@@ -1404,6 +1404,60 @@ public class Array {
         return res;
     }
 
+    long floorSqrt(long x) {
+        // Your code here
+        return (long) Math.sqrt(x);
+    }
+
+    public static int NumberofElementsInIntersection(int a[], int b[], int n, int m) {
+        // Your code here
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> countedSet = new HashSet<>();
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            set.add(a[i]);
+        }
+        for (int i = 0; i < m; i++) {
+            if (set.contains(b[i]) && !countedSet.contains(b[i])) {
+                count++;
+                countedSet.add(b[i]);
+            }
+        }
+        return count;
+    }
+
+    void pushZerosToEnd(int[] arr, int n) {
+        // code here
+        int pos[] = new int[n];
+        int zero[] = new int[n];
+        int posInd = 0;
+        int zeroInd = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != 0) {
+                pos[posInd] = arr[i];
+                posInd++;
+            } else {
+                zero[zeroInd] = arr[i];
+                zeroInd++;
+            }
+        }
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (posInd != 0) {
+            arr[i] = pos[j];
+            i++;
+            j++;
+            posInd--;
+        }
+        while (zeroInd != 0) {
+            arr[i] = zero[k];
+            k++;
+            i++;
+            zeroInd--;
+        }
+    }
+
     public static void main(String[] args) {
 
     }
