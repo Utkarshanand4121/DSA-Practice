@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class Array {
 
@@ -1461,6 +1462,35 @@ public class Array {
     static int oppositeFaceOfDice(int N) {
         // code here
         return (7 - N);
+    }
+
+    static int evenFactors(int N) {
+        // code here
+        int sum = 0;
+        for (int i = 2; i <= N; i += 2) {
+            if (N % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    public int[] uniqueId(long arr[], long n) {
+        long res[] = new long[(int) n];
+        LinkedHashSet<Long> lst = new LinkedHashSet<>();
+        for (int i = 0; i < (int) n; i++) {
+            lst.add(arr[i]);
+        }
+        int j = 0;
+        for (Long key : lst) {
+            res[j] = key;
+            j++;
+        }
+        int result[] = new int[j];
+        for (int i = 0; i < j; i++) {
+            result[i] = (int) res[i];
+        }
+        return result;
     }
 
     public static void main(String[] args) {
