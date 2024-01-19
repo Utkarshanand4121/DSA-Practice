@@ -220,6 +220,56 @@ public class ArrayLists {
         return res;
     }
 
+    ArrayList<String> pattern(String S) {
+        // code here
+        ArrayList<String> res = new ArrayList<>();
+        StringBuilder str = new StringBuilder();
+        int n = S.length();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= n - i - 1; j++) {
+                char ch = S.charAt(j);
+                str.append(ch);
+            }
+            res.add(str.toString());
+            str = new StringBuilder();
+        }
+        return res;
+    }
+
+    static List<String> splitString(String S) {
+        // code here
+        StringBuilder str1 = new StringBuilder();
+        StringBuilder str2 = new StringBuilder();
+        StringBuilder str3 = new StringBuilder();
+        ArrayList<String> res = new ArrayList<>();
+        for (int i = 0; i < S.length(); i++) {
+            char ch = S.charAt(i);
+            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                str1.append(ch);
+            } else if (ch >= '0' && ch <= '9') {
+                str2.append(ch);
+            } else {
+                str3.append(ch);
+            }
+        }
+        if (str1.length() == 0) {
+            res.add("-1");
+        } else {
+            res.add(str1.toString());
+        }
+        if (str2.length() == 0) {
+            res.add("-1");
+        } else {
+            res.add(str2.toString());
+        }
+        if (str3.length() == 0) {
+            res.add("-1");
+        } else {
+            res.add(str3.toString());
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
