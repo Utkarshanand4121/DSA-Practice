@@ -1493,6 +1493,19 @@ public class Array {
         return result;
     }
 
+    public static int check (int arr[], int[] brr, int n) {
+        //Complete the function
+        int res = 1;
+        Arrays.sort(arr);
+        Arrays.sort(brr);
+        for(int i=0; i<n; i++) {
+            if(arr[i] != brr[i]) {
+                res = 0;
+                break;
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
 
     }
