@@ -36,11 +36,10 @@ public class BTRevision {
     }
 
     public static void preOrder(Node root) {
-        if (root == null) {
+        if(root == null) {
             return;
         }
-
-        System.out.println(root.data);
+        System.out.print(root.data + " ");
         preOrder(root.left);
         preOrder(root.right);
     }
@@ -69,33 +68,30 @@ public class BTRevision {
         if (root == null) {
             return 0;
         }
-
         int lh = height(root.left);
         int rh = height(root.right);
-
-        return Math.max(lh, rh) + 1;
+        int res = Math.max(lh, rh) + 1;
+        return res;
     }
 
     public static int count(Node root) {
-        if (root == null) {
+        if(root == null) {
             return 0;
         }
-
         int lc = count(root.left);
         int rc = count(root.right);
-        int count = lc + rc + 1;
-        return count;
+        int treeCount = lc + rc + 1;
+        return treeCount;
     }
 
     public static int sum(Node root) {
-        if (root == null) {
+        if(root == null) {
             return 0;
         }
-
-        int sl = sum(root.left);
-        int sr = sum(root.right);
-        int sum = sl + sr + root.data;
-        return sum;
+        int leftSum = sum(root.left);
+        int rightSum = sum(root.right);
+        int treeSum = leftSum + rightSum + root.data;
+        return treeSum;
     }
 
     public static void levelOrder(Node root) {
@@ -125,17 +121,16 @@ public class BTRevision {
     }
 
     public static int diameter(Node root) {
-        if (root == null) {
+        if(root == null) {
             return 0;
         }
-        int ld = diameter(root.left);
         int lh = height(root.left);
-        int rd = diameter(root.right);
+        int ld = diameter(root.left);
         int rh = height(root.right);
+        int rd = diameter(root.right);
 
-        int selfHeight = lh + rh + 1;
-
-        return Math.max(selfHeight, Math.max(rd, ld));
+        int selfDia = lh + rh + 1;
+        return Math.max(Math.max(ld, rd), selfDia);
     }
 
     static class Info {
@@ -149,17 +144,16 @@ public class BTRevision {
     }
 
     public static Info diameter2(Node root) {
-        if (root == null) {
+        if(root == null) {
             return new Info(0, 0);
         }
-
         Info leftInfo = diameter2(root.left);
         Info rightInfo = diameter2(root.right);
 
-        int diam = Math.max(Math.max(leftInfo.dia, rightInfo.dia), leftInfo.ht + rightInfo.ht + 1);
-        int ht = Math.max(leftInfo.ht, rightInfo.ht) + 1;
+        int maxDia = Math.max(Math.max(leftInfo.dia, rightInfo.dia), leftInfo.ht + rightInfo.ht + 1);
+        int maxHei = Math.max(leftInfo.ht, rightInfo.ht) + 1;
 
-        return new Info(diam, ht);
+        return new Info(maxDia, maxHei);
     }
 
     // Subtree of a tree
@@ -322,7 +316,7 @@ public class BTRevision {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-
+        System.out.println(diameter2(root).ht);
         // Node subRoot = new Node(2);
         // subRoot.left = new Node(4);
         // subRoot.right = new Node(5);
@@ -331,8 +325,8 @@ public class BTRevision {
         // topView(root);
 
         // kLevel(root, 1, 2);
-        System.out.println(kthAncestor(root, 5, 1));
-        sumTree(root);
-        preorder(root);
+        // System.out.println(kthAncestor(root, 5, 1));
+        // sumTree(root);
+        // preorder(root);
     }
 }
