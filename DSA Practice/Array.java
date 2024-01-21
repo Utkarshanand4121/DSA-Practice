@@ -1557,6 +1557,37 @@ public class Array {
         }
     }
 
+    static long fact(long n1) {
+        long fact = 1;
+        for (long i = 1; i <= n1; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+    static long nPr(long n, long r) {
+        // code here
+        long res = fact(n);
+        long res1 = fact(n - r);
+        return res / res1;
+    }
+
+    int isPerfect(int N) {
+        // code here
+        int last = 0;
+        int sum = 0;
+        int num = N;
+        while (num > 0) {
+            last = num % 10;
+            sum += fact(last);
+            num /= 10;
+        }
+        if (sum == N) {
+            return 1;
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
 
     }
