@@ -1493,19 +1493,70 @@ public class Array {
         return result;
     }
 
-    public static int check (int arr[], int[] brr, int n) {
-        //Complete the function
+    public static int check(int arr[], int[] brr, int n) {
+        // Complete the function
         int res = 1;
         Arrays.sort(arr);
         Arrays.sort(brr);
-        for(int i=0; i<n; i++) {
-            if(arr[i] != brr[i]) {
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != brr[i]) {
                 res = 0;
                 break;
             }
         }
         return res;
     }
+
+    // Important Question
+    public int gcd(int A, int B) {
+        // code here
+        while ((A > 0) && (B > 0)) {
+            if (A > B) {
+                A = A % B;
+            } else {
+                B = B % A;
+            }
+        }
+        if (A == 0) {
+            return B;
+        }
+        return A;
+    }
+
+    void rearrange(int arr[], int n) {
+        // code here
+        int pos[] = new int[n];
+        int neg[] = new int[n];
+        int posInd = 0;
+        int negInd = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] >= 0) {
+                pos[posInd] = arr[i];
+                posInd++;
+            } else {
+                neg[negInd] = arr[i];
+                negInd++;
+            }
+        }
+        int j = 0;
+        int k = 0;
+        int l = 0;
+        while (j < posInd || k < negInd) {
+            if (j < posInd) {
+                arr[l] = pos[j];
+                j++;
+                l++;
+            }
+
+            if (k < negInd) {
+                arr[l] = neg[k];
+                k++;
+                l++;
+            }
+
+        }
+    }
+
     public static void main(String[] args) {
 
     }
