@@ -189,28 +189,28 @@ public class LL {
         return head;
     }
 
-    public Node insertInMid(Node head, int data){
-        //Insert code here, return the head of modified linked list
+    public Node insertInMid(Node head, int data) {
+        // Insert code here, return the head of modified linked list
         Node newNode = new Node(data);
-        if(head == null) {
+        if (head == null) {
             head = newNode;
             return head;
         }
         Node temp = head;
         int sz = 0;
-        while(temp != null) {
+        while (temp != null) {
             sz++;
             temp = temp.next;
         }
         temp = head;
         int sz1 = 0;
-        while(temp != null) {
+        while (temp != null) {
             sz1++;
-            if((sz1 == sz/2) && (sz % 2 == 0)) {
+            if ((sz1 == sz / 2) && (sz % 2 == 0)) {
                 newNode.next = temp.next;
                 temp.next = newNode;
                 break;
-            } else if((sz1 == sz/2 + 1) && (sz % 2 != 0)) {
+            } else if ((sz1 == sz / 2 + 1) && (sz % 2 != 0)) {
                 newNode.next = temp.next;
                 temp.next = newNode;
                 break;
@@ -219,6 +219,34 @@ public class LL {
         }
         return head;
     }
+
+    boolean isCircular(Node head) {
+        // Your code here
+        if (head == null) {
+            return true;
+        }
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void printList(Node head) {
+        // Your code here
+        Node temp = head;
+        while (temp.next != head) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.print(temp.data + " ");
+    }
+
     public static void main(String[] args) {
 
     }
