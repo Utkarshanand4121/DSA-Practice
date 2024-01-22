@@ -36,7 +36,7 @@ public class BTRevision {
     }
 
     public static void preOrder(Node root) {
-        if(root == null) {
+        if (root == null) {
             return;
         }
         System.out.print(root.data + " ");
@@ -75,7 +75,7 @@ public class BTRevision {
     }
 
     public static int count(Node root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
         int lc = count(root.left);
@@ -85,7 +85,7 @@ public class BTRevision {
     }
 
     public static int sum(Node root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
         int leftSum = sum(root.left);
@@ -121,7 +121,7 @@ public class BTRevision {
     }
 
     public static int diameter(Node root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
         int lh = height(root.left);
@@ -144,7 +144,7 @@ public class BTRevision {
     }
 
     public static Info diameter2(Node root) {
-        if(root == null) {
+        if (root == null) {
             return new Info(0, 0);
         }
         Info leftInfo = diameter2(root.left);
@@ -293,6 +293,23 @@ public class BTRevision {
         System.out.print(root.data + " ");
         preorder(root.left);
         preorder(root.right);
+    }
+
+    int minDepth(Node root) {
+        // code here
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null) {
+            return minDepth(root.right) + 1;
+        }
+        if (root.right == null) {
+            return minDepth(root.left) + 1;
+        }
+        int ld = minDepth(root.left);
+        int rd = minDepth(root.right);
+        int dep = (int) Math.min(ld, rd) + 1;
+        return dep;
     }
 
     public static void main(String[] args) {
