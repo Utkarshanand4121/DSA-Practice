@@ -1588,6 +1588,64 @@ public class Array {
         return 0;
     }
 
+    public void Rearrange(int a[], int n) {
+        // Your code goes here
+        int pos[] = new int[n];
+        int neg[] = new int[n];
+        int posInd = 0;
+        int negInd = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] >= 0) {
+                pos[posInd] = a[i];
+                posInd++;
+            } else {
+                neg[negInd] = a[i];
+                negInd++;
+            }
+        }
+        int j = 0;
+        int k = 0;
+        int l = 0;
+        while (j < negInd) {
+            a[l] = neg[j];
+            j++;
+            l++;
+        }
+        while (k < posInd) {
+            a[l] = pos[k];
+            l++;
+            k++;
+        }
+    }
+
+    void leftRotate(int[] arr, int n, int d) {
+        // code here
+        int temp[] = new int[d];
+        for (int i = 0; i < d; i++) {
+            temp[i] = arr[i];
+        }
+        int j = 0;
+        for (int i = d; i < n; i++) {
+            arr[j] = arr[i];
+            j++;
+        }
+        int k = 0;
+        for (int i = n - d; i < n; i++) {
+            arr[i] = temp[k];
+            k++;
+        }
+    }
+
+    public String MaxNumber(long arr[], long n) {
+        // code here.
+        Arrays.sort(arr);
+        StringBuilder str = new StringBuilder();
+        for (int i = (int) n - 1; i >= 0; i--) {
+            str.append(arr[i]);
+        }
+        return str.toString();
+    }
+
     public static void main(String[] args) {
 
     }
