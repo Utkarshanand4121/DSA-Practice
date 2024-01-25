@@ -180,6 +180,20 @@ public class BSTRevision {
         return root;
     }
 
+    Node insert(Node root, int Key) {
+        // your code here
+        if(root == null) {
+            root = new Node(Key);
+            return root;
+        } else if(root.data > Key) {
+            root.left = insert(root.left, Key);
+        } else if(Key == root.data) {
+            return root;
+        } else {
+            root.right = insert(root.right, Key);
+        }
+        return root;
+    }
     // merge two bst
     
     public static void main(String[] args) {
