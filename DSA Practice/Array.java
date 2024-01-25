@@ -1655,6 +1655,64 @@ public class Array {
         }
     }
 
+    public static int[] moveZeros(int n, int[] a) {
+        // Write your code here.
+        int j = -1;
+        for (int i = 0; i < n; i++) {
+            if (a[i] == 0) {
+                j = i;
+                break;
+            }
+        }
+        if (j == -1) {
+            return a;
+        }
+        for (int i = j + 1; i < n; i++) {
+            if (a[i] != 0) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+                j++;
+            }
+        }
+        return a;
+    }
+
+    long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        long maxSum = Long.MIN_VALUE;
+        long sum = 0;
+        for(int i=0; i<n; i++) {
+            sum += arr[i];
+            
+            if(sum > maxSum) {
+                maxSum = sum;
+            }
+            if(sum < 0) {
+                sum = 0;
+            }
+        }
+        return maxSum;
+    }
+    
+    static int smallestSumSubarray(int a[], int size)
+    {
+        // your code here
+        int minSum = Integer.MAX_VALUE;
+        int sum = 0;
+        for(int i=0; i<size; i++) {
+            sum += a[i];
+            
+            if(sum < minSum) {
+                minSum = sum;
+            }
+            if(sum > 0) {
+                sum = 0;
+            }
+        }
+        return minSum;
+    }
     public static void main(String[] args) {
 
     }
