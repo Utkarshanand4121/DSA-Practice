@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 public class Array {
 
@@ -1678,40 +1680,126 @@ public class Array {
         return a;
     }
 
-    long maxSubarraySum(int arr[], int n){
-        
+    long maxSubarraySum(int arr[], int n) {
+
         // Your code here
         long maxSum = Long.MIN_VALUE;
         long sum = 0;
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             sum += arr[i];
-            
-            if(sum > maxSum) {
+
+            if (sum > maxSum) {
                 maxSum = sum;
             }
-            if(sum < 0) {
+            if (sum < 0) {
                 sum = 0;
             }
         }
         return maxSum;
     }
-    
-    static int smallestSumSubarray(int a[], int size)
-    {
+
+    static int smallestSumSubarray(int a[], int size) {
         // your code here
         int minSum = Integer.MAX_VALUE;
         int sum = 0;
-        for(int i=0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             sum += a[i];
-            
-            if(sum < minSum) {
+
+            if (sum < minSum) {
                 minSum = sum;
             }
-            if(sum > 0) {
+            if (sum > 0) {
                 sum = 0;
             }
         }
         return minSum;
+    }
+
+    static int isPossible(int N, int arr[]) {
+        // code here
+        int sum = 0;
+        int last = 0;
+        for (int i = 0; i < N; i++) {
+            int ele = arr[i];
+            while (ele > 0) {
+                last = ele % 10;
+                sum += last;
+                ele /= 10;
+            }
+        }
+        if (sum % 3 == 0) {
+            return 1;
+        }
+        return 0;
+    }
+
+    int findDuplicate(int arr[], int N, int K) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < N; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < N; i++) {
+            if (map.get(arr[i]) == K) {
+                min = (int) Math.min(min, arr[i]);
+            }
+        }
+        return min;
+    }
+
+    public static int longestSuccessiveElements(int []a) {
+        // Write your code here.
+        int longest = 1;
+        if(a.length == 0) {
+            return 0;
+        }
+        
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0; i<a.length; i++) {
+            set.add(a[i]);
+        }
+        for(int key : set) {
+            if(!set.contains(key - 1)) {
+                int count = 1;
+                int x = key;
+                while(set.contains(key + 1)) {
+                    count++;
+                    key++;
+                }
+                longest = (int)Math.max(longest, count);
+            }
+        }
+        return longest;
+    }
+
+    static ArrayList<Integer> leaders(int arr[], int n){
+        // Your code here
+        ArrayList<Integer> res = new ArrayList<>();
+        int max = Integer.MIN_VALUE;
+        for(int i = n-1; i>=0; i--) {
+            
+            if(arr[i] >= max) {
+                max = arr[i];
+                res.add(max);
+            }
+        }
+        Collections.reverse(res);
+        return res;
+    }
+
+    public static List< Integer > superiorElements(int []a) {
+        // Write your code here.
+        List<Integer> res = new ArrayList<>();
+        int max = a[a.length - 1];
+        res.add(a[a.length - 1]);
+
+        for(int i=a.length - 2; i>=0; i--) {
+            if(a[i] > max) {
+                max = a[i];
+                res.add(max);
+            }
+        }
+        return res;
     }
     public static void main(String[] args) {
 
