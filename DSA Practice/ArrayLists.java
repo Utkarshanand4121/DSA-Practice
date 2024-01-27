@@ -287,32 +287,71 @@ public class ArrayLists {
         return res;
     }
 
-    public static List< Integer > nextGreaterPermutation(List< Integer > A) {
+    public static List<Integer> nextGreaterPermutation(List<Integer> A) {
         // Write your code here.
         int n = A.size();
         int ind = -1;
-        for(int i = n-2; i>=0; i--) {
-            if(A.get(i) < A.get(i+1)) {
+        for (int i = n - 2; i >= 0; i--) {
+            if (A.get(i) < A.get(i + 1)) {
                 ind = i;
                 break;
             }
         }
-        if(ind == -1) {
+        if (ind == -1) {
             Collections.reverse(A);
             return A;
         }
-        for(int i=n-1; i>=ind; i--) {
-            if(A.get(ind) < A.get(i)) {
+        for (int i = n - 1; i >= ind; i--) {
+            if (A.get(ind) < A.get(i)) {
                 int temp = A.get(i);
                 A.set(i, A.get(ind));
                 A.set(ind, temp);
                 break;
             }
         }
-        List<Integer> sublist = A.subList(ind+1, n);
+        List<Integer> sublist = A.subList(ind + 1, n);
         Collections.reverse(sublist);
         return A;
     }
+
+    public static ArrayList<ArrayList<Integer>> zeroMatrix(ArrayList<ArrayList<Integer>> matrix, Integer n, Integer m) {
+        // Write your code here.
+        int col1 = 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix.get(i).get(j) == 0) {
+                    matrix.get(i).set(0, 0);
+                    if (j != 0) {
+                        matrix.get(0).set(j, 0);
+                    } else {
+                        col1 = 0;
+                    }
+                }
+            }
+        }
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < m; j++) {
+                if (matrix.get(i).get(j) != 0) {
+                    if (matrix.get(i).get(0) == 0 || matrix.get(0).get(j) == 0) {
+                        matrix.get(i).set(j, 0);
+                    }
+                }
+
+            }
+        }
+        if (matrix.get(0).get(0) == 0) {
+            for (int j = 0; j < m; j++) {
+                matrix.get(0).set(j, 0);
+            }
+        }
+        if (col1 == 0) {
+            for (int i = 0; i < n; i++) {
+                matrix.get(i).set(0, 0);
+            }
+        }
+        return matrix;
+    }
+
     public static void main(String[] args) {
 
     }

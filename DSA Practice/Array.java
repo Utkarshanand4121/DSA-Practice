@@ -1747,38 +1747,38 @@ public class Array {
         return min;
     }
 
-    public static int longestSuccessiveElements(int []a) {
+    public static int longestSuccessiveElements(int[] a) {
         // Write your code here.
         int longest = 1;
-        if(a.length == 0) {
+        if (a.length == 0) {
             return 0;
         }
-        
+
         HashSet<Integer> set = new HashSet<>();
-        for(int i=0; i<a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             set.add(a[i]);
         }
-        for(int key : set) {
-            if(!set.contains(key - 1)) {
+        for (int key : set) {
+            if (!set.contains(key - 1)) {
                 int count = 1;
                 int x = key;
-                while(set.contains(key + 1)) {
+                while (set.contains(key + 1)) {
                     count++;
                     key++;
                 }
-                longest = (int)Math.max(longest, count);
+                longest = (int) Math.max(longest, count);
             }
         }
         return longest;
     }
 
-    static ArrayList<Integer> leaders(int arr[], int n){
+    static ArrayList<Integer> leaders(int arr[], int n) {
         // Your code here
         ArrayList<Integer> res = new ArrayList<>();
         int max = Integer.MIN_VALUE;
-        for(int i = n-1; i>=0; i--) {
-            
-            if(arr[i] >= max) {
+        for (int i = n - 1; i >= 0; i--) {
+
+            if (arr[i] >= max) {
                 max = arr[i];
                 res.add(max);
             }
@@ -1787,20 +1787,107 @@ public class Array {
         return res;
     }
 
-    public static List< Integer > superiorElements(int []a) {
+    public static List<Integer> superiorElements(int[] a) {
         // Write your code here.
         List<Integer> res = new ArrayList<>();
         int max = a[a.length - 1];
         res.add(a[a.length - 1]);
 
-        for(int i=a.length - 2; i>=0; i--) {
-            if(a[i] > max) {
+        for (int i = a.length - 2; i >= 0; i--) {
+            if (a[i] > max) {
                 max = a[i];
                 res.add(max);
             }
         }
         return res;
     }
+
+    public int[] twoSum(int[] numbers, int target) {
+        int res[] = new int[2];
+        int start = 0;
+        int end = numbers.length - 1;
+        Arrays.fill(res, -1);
+        while (start < end) {
+            if ((numbers[start] + numbers[end]) == target) {
+                res[0] = start + 1;
+                res[1] = end + 1;
+                return res;
+            } else if (numbers[start] + numbers[end] > target) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+        return res;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        int res[] = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int find = target - nums[i];
+            if (map.containsKey(find)) {
+                res[0] = map.get(find);
+                res[1] = i;
+            }
+            map.put(nums[i], i);
+        }
+        return res;
+    }
+
+    public static void rotateMatrix(int[][] mat) {
+        // Write your code here.
+        int res[][] = new int[mat.length][mat[0].length];
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                res[i][mat[0].length - j - 1] = mat[j][i];
+            }
+        }
+        for (int i = mat.length - 1; i >= 0; i--) {
+            for (int j = 0; j < mat[0].length; j++) {
+                mat[i][j] = res[i][j];
+            }
+        }
+    }
+
+    int columnWithMaxZeros(int arr[][], int N) {
+        // code here
+        int max = 0;
+        int res = -1;
+        for (int i = 0; i < N; i++) {
+            int count = 0;
+            for (int j = 0; j < N; j++) {
+                if (arr[j][i] == 0) {
+                    count++;
+                }
+                if (max < count) {
+                    max = count;
+                    res = i;
+                }
+            }
+        }
+        return res;
+    }
+
+    static void interchange(int a[][], int r, int c) {
+        // Your code here
+        int row = 0;
+        int col = 0;
+        int col1 = c - 1;
+        while (row < a.length) {
+            int temp = a[row][col];
+            a[row][col] = a[row][col1];
+            a[row][col1] = temp;
+            row++;
+        }
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
 
     }
