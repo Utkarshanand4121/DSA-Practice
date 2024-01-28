@@ -1888,6 +1888,39 @@ public class Array {
         }
     }
 
+    public static int findAllSubarraysWithGivenSum(int arr[], int s) {
+        // Write your code here.
+        int n = arr.length;
+        int preSum = 0;
+        int cnt = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        for (int i = 0; i < n; i++) {
+            preSum += arr[i];
+            int remove = preSum - s;
+            cnt += map.getOrDefault(remove, 0);
+            map.put(preSum, map.getOrDefault(preSum, 0) + 1);
+        }
+        return cnt;
+    }
+
+    static int findFloor(long arr[], int n, long x) {
+        int start = 0;
+        int end = n - 1;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (arr[mid] == x) {
+                return mid;
+            } else if (arr[mid] > x) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return end;
+    }
+
+    
     public static void main(String[] args) {
 
     }

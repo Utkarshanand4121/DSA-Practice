@@ -97,6 +97,39 @@ public class Stacks {
         }
         return nextGreater;
     } 
+
+    public void deleteMid(Stack<Integer>s,int sizeOfStack){
+        // code here
+        Stack<Integer> hs = new Stack<>();
+        int count = 0;
+        while(!s.isEmpty()) {
+            int top = s.pop();
+            count++;
+            if(count == sizeOfStack/2 + 1) {
+                continue;
+            } else {
+                hs.push(top);
+            }
+        }
+        while(!hs.isEmpty()) {
+            int top1 = hs.pop();
+            s.push(top1);
+        }
+    }
+
+    public int min(Stack<Integer> s)
+        {
+           //add code here.
+           int min = Integer.MAX_VALUE;
+           while(!s.isEmpty()) {
+               int top = s.pop();
+               if(min > top) {
+                   min = top;
+               }
+           }
+           
+           return min;
+	}
     public static void main(String[] args) {
 
     }
