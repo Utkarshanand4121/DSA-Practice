@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Stacks {
@@ -79,57 +80,86 @@ public class Stacks {
     }
 
     // NextGreater Element
-    public static long[] nextLargerElement(long[] arr, int n)
-    { 
+    public static long[] nextLargerElement(long[] arr, int n) {
         // Your code here
         Stack<Long> s = new Stack<>();
         long nextGreater[] = new long[n];
-        for(int i=n-1; i>=0; i--) {
-            while((!s.isEmpty()) && (arr[s.peek().intValue()] <= arr[i])) {
+        for (int i = n - 1; i >= 0; i--) {
+            while ((!s.isEmpty()) && (arr[s.peek().intValue()] <= arr[i])) {
                 s.pop();
             }
-            if(s.isEmpty()) {
+            if (s.isEmpty()) {
                 nextGreater[i] = -1;
             } else {
                 nextGreater[i] = arr[s.peek().intValue()];
             }
-            s.push((long)i);
+            s.push((long) i);
         }
         return nextGreater;
-    } 
+    }
 
-    public void deleteMid(Stack<Integer>s,int sizeOfStack){
+    public void deleteMid(Stack<Integer> s, int sizeOfStack) {
         // code here
         Stack<Integer> hs = new Stack<>();
         int count = 0;
-        while(!s.isEmpty()) {
+        while (!s.isEmpty()) {
             int top = s.pop();
             count++;
-            if(count == sizeOfStack/2 + 1) {
+            if (count == sizeOfStack / 2 + 1) {
                 continue;
             } else {
                 hs.push(top);
             }
         }
-        while(!hs.isEmpty()) {
+        while (!hs.isEmpty()) {
             int top1 = hs.pop();
             s.push(top1);
         }
     }
 
-    public int min(Stack<Integer> s)
-        {
-           //add code here.
-           int min = Integer.MAX_VALUE;
-           while(!s.isEmpty()) {
-               int top = s.pop();
-               if(min > top) {
-                   min = top;
-               }
-           }
-           
-           return min;
-	}
+    public int min(Stack<Integer> s) {
+        // add code here.
+        int min = Integer.MAX_VALUE;
+        while (!s.isEmpty()) {
+            int top = s.pop();
+            if (min > top) {
+                min = top;
+            }
+        }
+        return min;
+    }
+
+    public Stack<Integer> insertAtBottom(Stack<Integer> St, int X) {
+        Stack<Integer> s = new Stack<>();
+        while (!St.isEmpty()) {
+            s.push(St.pop());
+        }
+        St.push(X);
+        while (!s.isEmpty()) {
+            St.push(s.pop());
+        }
+        return St;
+    }
+
+    public static Stack<Integer> _push(ArrayList<Integer> arr, int n) {
+        // Your code here
+        Stack<Integer> s = new Stack<>();
+        for (int i = 0; i < arr.size(); i++) {
+            s.push(arr.get(i));
+        }
+        return s;
+    }
+
+    public static void _pop(Stack<Integer> s) {
+        // Your code here
+        if (s.size() == 0) {
+            return;
+        }
+        while (!s.isEmpty()) {
+            System.out.print(s.pop() + " ");
+        }
+    }
+
     public static void main(String[] args) {
 
     }

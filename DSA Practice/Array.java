@@ -1920,7 +1920,28 @@ public class Array {
         return end;
     }
 
-    
+    int maxRepeating2(int[] arr, int n, int k) {
+        // code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<n; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        Arrays.sort(arr);
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<n; i++) {
+            if(map.get(arr[i]) > max) {
+                max = map.get(arr[i]);
+            }
+        }
+        int min = 0;
+        for(int i=0; i<n; i++) {
+            if(map.get(arr[i]) == max) {
+                min = arr[i];
+                return min;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
 
     }
