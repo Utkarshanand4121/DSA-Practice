@@ -500,6 +500,24 @@ public class Strings {
         return res.toString();
     }
 
+    public String reverseString(String s)
+    {
+        //code here.
+        StringBuilder str = new StringBuilder();
+        LinkedHashSet<Character> set = new LinkedHashSet<>();
+        for(int i=s.length() - 1; i>=0; i--) {
+            char ch = s.charAt(i);
+            if(ch == ' ') {
+                continue;
+            } else {
+                set.add(ch);
+            }
+        }
+        for(Character key : set) {
+            str.append(key);
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
 
     }

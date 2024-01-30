@@ -1923,24 +1923,110 @@ public class Array {
     int maxRepeating2(int[] arr, int n, int k) {
         // code here
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
         Arrays.sort(arr);
         int max = Integer.MIN_VALUE;
-        for(int i=0; i<n; i++) {
-            if(map.get(arr[i]) > max) {
+        for (int i = 0; i < n; i++) {
+            if (map.get(arr[i]) > max) {
                 max = map.get(arr[i]);
             }
         }
         int min = 0;
-        for(int i=0; i<n; i++) {
-            if(map.get(arr[i]) == max) {
+        for (int i = 0; i < n; i++) {
+            if (map.get(arr[i]) == max) {
                 min = arr[i];
                 return min;
             }
         }
         return -1;
+    }
+
+    public static List<List<Integer>> triplet(int n, int[] arr) {
+        // Write your code here.
+        Arrays.sort(arr);
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && arr[i] == arr[i - 1]) {
+                continue;
+            }
+            int j = i + 1;
+            int k = n - 1;
+            while (j < k) {
+                int sum = arr[i] + arr[j] + arr[k];
+                if (sum < 0) {
+                    j++;
+                } else if (sum > 0) {
+                    k--;
+                } else {
+                    List<Integer> res = Arrays.asList(arr[i], arr[j], arr[k]);
+                    ans.add(res);
+                    j++;
+                    k--;
+                    while ((j < k) && (arr[j] == arr[j - 1])) {
+                        j++;
+                    }
+                    while ((j < k) && (arr[k] == arr[k + 1])) {
+                        k--;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+    public static int LargButMinFreq(int arr[], int n) {
+        // Your code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        int res = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (Integer key : map.keySet()) {
+            if (((min > map.get(key))) || (min == map.get(key) && (res < key))) {
+                min = map.get(key);
+                res = key;
+            }
+        }
+        return res;
+    }
+
+    public static void SortedDuplicates(int arr[], int n) {
+        // Your code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        Arrays.sort(arr);
+        if (map.get(arr[0]) > 1) {
+            System.out.print(arr[0] + " ");
+        }
+        int count = 0;
+        for (int i = 1; i < n; i++) {
+            if ((map.get(arr[i]) > 1) && arr[i] != arr[i - 1]) {
+                System.out.print(arr[i] + " ");
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.print(-1);
+        }
+    }
+
+    public static int sumExists(int arr[], int n, int sum)
+    {
+        // your code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<n; i++) {
+            int target = sum - arr[i];
+            if(map.containsKey(target)) {
+                return 1;
+            }
+            map.put(arr[i], i);
+        }
+        return 0;
     }
     public static void main(String[] args) {
 
