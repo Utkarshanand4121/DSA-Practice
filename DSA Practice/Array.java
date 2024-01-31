@@ -2015,13 +2015,12 @@ public class Array {
         }
     }
 
-    public static int sumExists(int arr[], int n, int sum)
-    {
+    public static int sumExists(int arr[], int n, int sum) {
         // your code here
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             int target = sum - arr[i];
-            if(map.containsKey(target)) {
+            if (map.containsKey(target)) {
                 return 1;
             }
             map.put(arr[i], i);
