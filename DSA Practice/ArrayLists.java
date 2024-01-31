@@ -352,6 +352,28 @@ public class ArrayLists {
         return matrix;
     }
 
+    ArrayList<Integer> find(int arr[], int n, int x) {
+        // code here
+        ArrayList<Integer> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == x) {
+                res.add(i);
+                break;
+            }
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            if (arr[i] == x) {
+                res.add(i);
+                break;
+            }
+        }
+        if (res.isEmpty()) {
+            res.add(-1);
+            res.add(-1);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
