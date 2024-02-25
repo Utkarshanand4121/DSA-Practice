@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Scanner;
 
 public class Array {
 
@@ -2027,7 +2028,6 @@ public class Array {
         }
         return 0;
     }
-
     // 4 sum Problem is great
     public static void main(String[] args) {
 
