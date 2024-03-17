@@ -70,6 +70,49 @@ public class StackRevision2 {
             return head.data;
         }
     }
+
+    public static void pushAtBottom(Stack<Integer> s, int data) {
+        if(s.isEmpty()) {
+            s.push(data);
+            return;
+        }
+        int top = s.pop();
+        pushAtBottom(s, data);
+        s.push(top);
+    }
+
+    public static void reverse(Stack<Integer> s) {
+        if(s.isEmpty()) {
+            return;
+        }
+        int top = s.pop();
+        reverse(s);
+        pushAtBottom(s, top);
+    }
+
+    public static boolean duplicate(String str) {
+        Stack<Character> s = new Stack<>();
+        
+        for(int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if(ch == ')') {
+                int cnt = 0;
+                while(s.peek() != '(') {
+                    s.pop();
+                    cnt++;
+                }
+                if(cnt < 1) {
+                    return true;
+                } else {
+                    s.pop();
+                }
+            } else {
+                s.push(ch);
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         // StackB s = new StackB();
         // s.push(1);
@@ -77,9 +120,19 @@ public class StackRevision2 {
         // s.push(3);
         // System.out.println(s.pop());
 
-        StackLL s2 = new StackLL();
-        s2.push(1);
-        s2.push(2);
-        System.out.println(s2.pop());
+        // StackLL s2 = new StackLL();
+        // s2.push(1);
+        // s2.push(2);
+        // System.out.println(s2.pop());
+        // Stack<Integer> s = new Stack<>();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+        // pushAtBottom(s, 4);
+        // // print(s);
+        // reverse(s);
+        // print(s);
+
+        System.out.println(duplicate("((a+b))"));
     }
 }
