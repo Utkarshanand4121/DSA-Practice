@@ -500,24 +500,50 @@ public class Strings {
         return res.toString();
     }
 
-    public String reverseString(String s)
-    {
-        //code here.
+    public String reverseString(String s) {
+        // code here.
         StringBuilder str = new StringBuilder();
         LinkedHashSet<Character> set = new LinkedHashSet<>();
-        for(int i=s.length() - 1; i>=0; i--) {
+        for (int i = s.length() - 1; i >= 0; i--) {
             char ch = s.charAt(i);
-            if(ch == ' ') {
+            if (ch == ' ') {
                 continue;
             } else {
                 set.add(ch);
             }
         }
-        for(Character key : set) {
+        for (Character key : set) {
             str.append(key);
         }
         return str.toString();
     }
+
+    public static int divisibleBy4(String N) {
+        // Your Code Here
+        int rem = 0;
+        for (int i = 0; i < N.length(); i++) {
+            char ch = N.charAt(i);
+            rem = ((rem * 10) + ch - '0') % 4;
+        }
+        if (rem == 0) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public static int divisibleBy11(String S) {
+        // Your Code Here
+        int rem = 0;
+        for (int i = 0; i < S.length(); i++) {
+            char ch = S.charAt(i);
+            rem = (rem * 10 + (ch - '0')) % 11;
+        }
+        if (rem == 0) {
+            return 1;
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
 
     }
