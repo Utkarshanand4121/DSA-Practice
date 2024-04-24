@@ -475,7 +475,7 @@ public class Strings {
         return res.toString();
     }
 
-    String modify(String s) {
+    String modify2(String s) {
         // your code here
         StringBuilder vow = new StringBuilder();
         StringBuilder res = new StringBuilder();

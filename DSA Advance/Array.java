@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Array {
-    public int maxNumberOfBalloons(String text) {
+    public static int maxNumberOfBalloons(String text) {
         String word = "balloon";
         HashMap<Character, Integer> map = new HashMap<>();
         HashMap<Character, Integer> map1 = new HashMap<>();
@@ -36,7 +36,7 @@ public class Array {
         return 0;
     }
 
-    public int[] sortedSquares(int[] nums) {
+    public static int[] sortedSquares(int[] nums) {
         // int res[] = new int[nums.length];
         // for(int i=0; i<nums.length; i++) {
         //     res[i] = nums[i] * nums[i];
@@ -66,7 +66,7 @@ public class Array {
     }
 
     // Next Greater Element 1 --- LeetCode (496) -- rocking Question
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+    public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int nextGreater2[] = new int[nums2.length];
         Stack<Integer> s = new Stack<>();
         for(int i=nums2.length - 1; i>=0; i--) {
@@ -89,6 +89,21 @@ public class Array {
             ans[i] = map.containsKey(nums1[i]) ? map.get(nums1[i]) : -1;
         }
         return ans;
+    }
+
+    // LeetCode (POTD) -- 1137
+    public int tribonacci(int n) {
+        if(n == 0 || n == 1) {
+            return n;
+        }
+        int dp[] = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 1;
+        for(int i=3; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
+        }
+        return dp[n];
     }
     public static void main(String[] args) {
         
