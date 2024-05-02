@@ -105,6 +105,29 @@ public class Arrays {
         }
         return dp[n];
     }
+
+    // LeetCode 2441 -- Daily Challenge 02/05/2024
+    public static int findMaxK(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] > 0) {
+                arr.add(nums[i]);
+            } else {
+                set.add(nums[i]);
+            }
+        }
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<arr.size(); i++) {
+            if(set.contains(-arr.get(i)) && max < arr.get(i)) {
+                max = arr.get(i);
+            }
+        }
+        if(max == Integer.MIN_VALUE) {
+            return -1;
+        }
+        return max;
+    }
     public static void main(String[] args) {
         
     }
