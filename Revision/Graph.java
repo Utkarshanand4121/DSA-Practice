@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Graph {
     static class Edge {
         int src;
@@ -62,14 +63,14 @@ public class Graph {
 
         q.add(0); // source = 0;
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int curr = q.remove();
 
-            if(!vis[curr]) {
+            if (!vis[curr]) {
                 System.out.print(curr + " ");
                 vis[curr] = true;
 
-                for(int i=0; i<graph[curr].size(); i++) {
+                for (int i = 0; i < graph[curr].size(); i++) {
                     Edge e = graph[curr].get(i);
                     q.add(e.dest);
                 }
@@ -83,9 +84,9 @@ public class Graph {
         System.out.print(curr + " ");
         vis[curr] = true;
 
-        for(int i=0; i<graph[curr].size(); i++) {
+        for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
-            if(!vis[e.dest]) {
+            if (!vis[e.dest]) {
                 dfs(graph, e.dest, vis);
             }
         }
@@ -93,16 +94,16 @@ public class Graph {
 
     // Has Path
     public static boolean hasPath(ArrayList<Edge> graph[], int src, int dest, boolean vis[]) {
-        if(src == dest) {
+        if (src == dest) {
             return true;
         }
 
         vis[src] = true;
 
-        for(int i=0; i<graph[src].size(); i++) {
+        for (int i = 0; i < graph[src].size(); i++) {
             Edge e = graph[src].get(i);
             // e.dest == neighbour
-            if(!vis[e.dest] && hasPath(graph, e.dest, dest, vis)) {
+            if (!vis[e.dest] && hasPath(graph, e.dest, dest, vis)) {
                 return true;
             }
         }
@@ -115,8 +116,8 @@ public class Graph {
     public static void bfs1(ArrayList<Edge> graph[]) {
         boolean vis[] = new boolean[graph.length];
 
-        for(int i=0; i<graph[i].size(); i++) {
-            if(!vis[i]) {
+        for (int i = 0; i < graph[i].size(); i++) {
+            if (!vis[i]) {
                 bfsUtil(graph, vis);
             }
         }
@@ -124,18 +125,17 @@ public class Graph {
 
     public static void bfsUtil(ArrayList<Edge> graph[], boolean vis[]) { // O(V + E)
         Queue<Integer> q = new LinkedList<>();
-        
 
         q.add(0); // source = 0;
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int curr = q.remove();
 
-            if(!vis[curr]) {
+            if (!vis[curr]) {
                 System.out.print(curr + " ");
                 vis[curr] = true;
 
-                for(int i=0; i<graph[curr].size(); i++) {
+                for (int i = 0; i < graph[curr].size(); i++) {
                     Edge e = graph[curr].get(i);
                     q.add(e.dest);
                 }
@@ -147,25 +147,68 @@ public class Graph {
     public static void dfs1(ArrayList<Edge> graph[]) {
         boolean vis[] = new boolean[graph.length];
 
-        for(int i=0; i<graph[i].size(); i++) {
-            if(!vis[i]) {
+        for (int i = 0; i < graph[i].size(); i++) {
+            if (!vis[i]) {
                 dfsUtil(graph, i, vis);
             }
         }
     }
+
     public static void dfsUtil(ArrayList<Edge> graph[], int curr, boolean vis[]) { // O(V + E)
         // visit
 
         System.out.print(curr + " ");
         vis[curr] = true;
 
-        for(int i=0; i<graph[curr].size(); i++) {
+        for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
-            if(!vis[e.dest]) {
+            if (!vis[e.dest]) {
                 dfsUtil(graph, e.dest, vis);
             }
         }
     }
+
+    // Cycle Detection
+
+    // Undirected graph
+    // O(V + E)
+    public static boolean detectCycle(ArrayList<Edge> graph[]) {
+        boolean vis[] = new boolean[graph.length];
+
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]) {
+                if (detectCycleUtil(graph, vis, i, -1)) {
+                    return true;
+                    // cycle exists here in one of the parts
+                }
+            }
+
+        }
+        return false;
+    }
+
+    public static boolean detectCycleUtil(ArrayList<Edge> graph[], boolean vis[], int curr, int par) {
+        vis[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+
+            // case 3
+            if (!vis[e.dest]) {
+                if(detectCycleUtil(graph, vis, e.dest, curr)) {
+                    return true;
+                }
+            }
+            // case 1
+            else if (vis[e.dest] && e.dest != par) {
+                return true;
+            }
+
+            // case 2 -- do nothing
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
@@ -175,5 +218,7 @@ public class Graph {
         // dfs(graph, 0, new boolean[V]);
 
         System.out.println(hasPath(graph, 0, 5, new boolean[V]));
+
+        System.out.println(detectCycle(graph));
     }
 }
