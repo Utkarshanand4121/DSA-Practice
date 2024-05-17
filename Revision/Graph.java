@@ -209,6 +209,37 @@ public class Graph {
         return false;
     }
 
+    // Bipartite graph
+    public static boolean isBipartite(ArrayList<Edge> graph[]) { // O(V + E)
+        int col[] = new int[graph.length];
+        for(int i=0; i<col.length; i++) {
+            col[i] = -1; // no color
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+
+        for(int i=0; i<graph.length; i++) {
+            if(col[i] == -1) {
+                // BFS
+                q.add(i);
+                col[i] = 0; // Yellow
+                while(!q.isEmpty()) {
+                    int curr = q.remove();
+                    for(int j=0; j<graph[curr].size(); j++) {
+                        Edge e = graph[curr].get(j);
+                        if(col[e.dest] == -1) {
+                            int nextCol = col[curr] == 0 ? 1 : 0;
+                            col[e.dest] = nextCol;
+                            q.add(e.dest);
+                        } else if(col[e.dest] == col[curr]) {
+                            return false; // NOT Bipartite
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
@@ -220,5 +251,7 @@ public class Graph {
         System.out.println(hasPath(graph, 0, 5, new boolean[V]));
 
         System.out.println(detectCycle(graph));
+
+        System.out.println(isBipartite(graph));
     }
 }
