@@ -240,6 +240,40 @@ public class Graph {
         }
         return true;
     }
+
+    // Cycle in Directed Graph
+    public static boolean isCycle(ArrayList<Edge>[] graph) {
+        boolean vis[] = new boolean[graph.length];
+        boolean stack[] = new boolean[graph.length];
+
+        for(int i=0; i<graph.length; i++) {
+            if(!vis[i]) {
+                if(isCycleUtil(graph, i, vis, stack)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isCycleUtil(ArrayList<Edge> graph[], int curr, boolean vis[], boolean stack[]) {
+        vis[curr] = true;
+        stack[curr] = true;
+
+        for(int i=0; i<graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if(stack[e.dest] == true) { // cycle
+                return true;
+            }
+            if(!vis[e.dest] && isCycleUtil(graph, e.dest, vis, stack)) {
+                return true;
+            }
+        }
+
+        stack[curr] = false;
+        return false;
+    }
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
@@ -253,5 +287,7 @@ public class Graph {
         System.out.println(detectCycle(graph));
 
         System.out.println(isBipartite(graph));
+
+        System.out.println(isCycle(graph));
     }
 }
