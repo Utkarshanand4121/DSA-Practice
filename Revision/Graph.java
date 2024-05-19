@@ -274,20 +274,52 @@ public class Graph {
         stack[curr] = false;
         return false;
     }
+
+    // Topological Sorting
+
+    public static void topSort(ArrayList<Edge> graph[]) {
+        boolean vis[] = new boolean[graph.length];
+        Stack<Integer> s = new Stack<>();
+
+        for(int i=0; i<graph.length; i++) {
+            if(!vis[i]) {
+                topSortUtil(graph, i, vis, s); // modified dfs
+            }
+        }
+
+        while(!s.isEmpty()) {
+            System.out.print(s.pop() + " ");
+        }
+    }
+
+    public static void topSortUtil(ArrayList<Edge> graph[], int curr, boolean vis[], Stack<Integer> s) {
+        vis[curr] = true;
+
+        for(int i=0; i<graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dest]) {
+                topSortUtil(graph, e.dest, vis, s);
+            }
+        }
+
+        s.push(curr);
+    }
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
-        bfs(graph);
-        System.out.println();
+        // bfs(graph);
+        // System.out.println();
         // dfs(graph, 0, new boolean[V]);
 
-        System.out.println(hasPath(graph, 0, 5, new boolean[V]));
+        // System.out.println(hasPath(graph, 0, 5, new boolean[V]));
 
-        System.out.println(detectCycle(graph));
+        // System.out.println(detectCycle(graph));
 
-        System.out.println(isBipartite(graph));
+        // System.out.println(isBipartite(graph));
 
-        System.out.println(isCycle(graph));
+        // System.out.println(isCycle(graph));
+
+        topSort(graph);
     }
 }
