@@ -304,6 +304,56 @@ public class Graph {
 
         s.push(curr);
     }
+
+    // Topological Sort -- Khan's algorithm
+    public static void calIndegree(ArrayList<Edge>[] graph, int indegre[]) {
+        for(int i=0; i<graph.length; i++) {
+            int v = i;
+            for(int j =0; j<graph[v].size(); j++) {
+                Edge e = graph[v].get(j);
+                indegre[e.dest]++;
+            }
+        }
+    }
+
+    public static void topSort2(ArrayList<Edge> graph[]) {
+        int inde[] = new int[graph.length];
+        calIndegree(graph, inde);
+
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=0; i<inde.length; i++) {
+            if(inde[i] == 0) {
+                q.add(i);
+            }
+        }
+           
+        while(!q.isEmpty()) {
+            int curr = q.remove();
+            System.out.print(curr + " "); // Topological sorting
+
+            for(int i=0; i<graph[curr].size(); i++) {
+                Edge e = graph[curr].get(i);
+                inde[e.dest]--;
+                if(inde[e.dest] == 0) {
+                    q.add(e.dest);
+                }
+            }
+        }
+        
+    }
+
+    // All path from src to dest
+    public static void printallpath(ArrayList<Edge> graph[], int src, int dest, String path) {
+        if(src == dest) {
+            System.out.println(path + dest);
+            return;
+        }
+
+        for(int i=0; i<graph[src].size(); i++) {
+            Edge e = graph[src].get(i);
+            printallpath(graph, e.dest, dest, path + src);
+        }
+    }
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
