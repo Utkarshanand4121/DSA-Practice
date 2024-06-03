@@ -441,6 +441,41 @@ public class Graph {
         System.out.println();
     }
 
+    // Prims Algo
+    static class Pair2 implements Comparable<Pair2>{
+        int v;
+        int cost;
+
+        public Pair2(int v, int c) {
+            this.v = v;
+            this.cost = c;
+        }
+
+        @Override
+        public int compareTo(Pair2 p2) {
+            return this.cost - p2.cost; // ascending
+        }
+    }
+    public static void prims(ArrayList<Edge> graph[]) {
+        boolean vis[] = new boolean[graph.length];
+        PriorityQueue<Pair2> pq = new PriorityQueue<>();
+        pq.add(new Pair2(0, 0));
+
+        int finalCost = 0;
+        while(!pq.isEmpty()) {
+            Pair2 curr = pq.remove();
+            if(!vis[curr.v]) {
+                vis[curr.v] = true;
+                finalCost += curr.cost;
+
+                for(int i=0; i<graph[curr.v].size(); i++) {
+                    Edge e = graph[curr.v].get(i);
+                    pq.add(new Pair2(e.dest, e.wt));
+                }
+            }
+        }
+        System.out.print("Min cost is : " + finalCost); 
+    }
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
