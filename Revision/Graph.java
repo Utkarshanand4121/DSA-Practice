@@ -195,7 +195,7 @@ public class Graph {
 
             // case 3
             if (!vis[e.dest]) {
-                if(detectCycleUtil(graph, vis, e.dest, curr)) {
+                if (detectCycleUtil(graph, vis, e.dest, curr)) {
                     return true;
                 }
             }
@@ -212,26 +212,26 @@ public class Graph {
     // Bipartite graph
     public static boolean isBipartite(ArrayList<Edge> graph[]) { // O(V + E)
         int col[] = new int[graph.length];
-        for(int i=0; i<col.length; i++) {
+        for (int i = 0; i < col.length; i++) {
             col[i] = -1; // no color
         }
 
         Queue<Integer> q = new LinkedList<>();
 
-        for(int i=0; i<graph.length; i++) {
-            if(col[i] == -1) {
+        for (int i = 0; i < graph.length; i++) {
+            if (col[i] == -1) {
                 // BFS
                 q.add(i);
                 col[i] = 0; // Yellow
-                while(!q.isEmpty()) {
+                while (!q.isEmpty()) {
                     int curr = q.remove();
-                    for(int j=0; j<graph[curr].size(); j++) {
+                    for (int j = 0; j < graph[curr].size(); j++) {
                         Edge e = graph[curr].get(j);
-                        if(col[e.dest] == -1) {
+                        if (col[e.dest] == -1) {
                             int nextCol = col[curr] == 0 ? 1 : 0;
                             col[e.dest] = nextCol;
                             q.add(e.dest);
-                        } else if(col[e.dest] == col[curr]) {
+                        } else if (col[e.dest] == col[curr]) {
                             return false; // NOT Bipartite
                         }
                     }
@@ -246,9 +246,9 @@ public class Graph {
         boolean vis[] = new boolean[graph.length];
         boolean stack[] = new boolean[graph.length];
 
-        for(int i=0; i<graph.length; i++) {
-            if(!vis[i]) {
-                if(isCycleUtil(graph, i, vis, stack)) {
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]) {
+                if (isCycleUtil(graph, i, vis, stack)) {
                     return true;
                 }
             }
@@ -261,12 +261,12 @@ public class Graph {
         vis[curr] = true;
         stack[curr] = true;
 
-        for(int i=0; i<graph[curr].size(); i++) {
+        for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
-            if(stack[e.dest] == true) { // cycle
+            if (stack[e.dest] == true) { // cycle
                 return true;
             }
-            if(!vis[e.dest] && isCycleUtil(graph, e.dest, vis, stack)) {
+            if (!vis[e.dest] && isCycleUtil(graph, e.dest, vis, stack)) {
                 return true;
             }
         }
@@ -281,13 +281,13 @@ public class Graph {
         boolean vis[] = new boolean[graph.length];
         Stack<Integer> s = new Stack<>();
 
-        for(int i=0; i<graph.length; i++) {
-            if(!vis[i]) {
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]) {
                 topSortUtil(graph, i, vis, s); // modified dfs
             }
         }
 
-        while(!s.isEmpty()) {
+        while (!s.isEmpty()) {
             System.out.print(s.pop() + " ");
         }
     }
@@ -295,9 +295,9 @@ public class Graph {
     public static void topSortUtil(ArrayList<Edge> graph[], int curr, boolean vis[], Stack<Integer> s) {
         vis[curr] = true;
 
-        for(int i=0; i<graph[curr].size(); i++) {
+        for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
-            if(!vis[e.dest]) {
+            if (!vis[e.dest]) {
                 topSortUtil(graph, e.dest, vis, s);
             }
         }
@@ -307,9 +307,9 @@ public class Graph {
 
     // Topological Sort -- Khan's algorithm
     public static void calIndegree(ArrayList<Edge>[] graph, int indegre[]) {
-        for(int i=0; i<graph.length; i++) {
+        for (int i = 0; i < graph.length; i++) {
             int v = i;
-            for(int j =0; j<graph[v].size(); j++) {
+            for (int j = 0; j < graph[v].size(); j++) {
                 Edge e = graph[v].get(j);
                 indegre[e.dest]++;
             }
@@ -321,36 +321,36 @@ public class Graph {
         calIndegree(graph, inde);
 
         Queue<Integer> q = new LinkedList<>();
-        for(int i=0; i<inde.length; i++) {
-            if(inde[i] == 0) {
+        for (int i = 0; i < inde.length; i++) {
+            if (inde[i] == 0) {
                 q.add(i);
             }
         }
-           
-        while(!q.isEmpty()) {
+
+        while (!q.isEmpty()) {
             int curr = q.remove();
             System.out.print(curr + " "); // Topological sorting
 
-            for(int i=0; i<graph[curr].size(); i++) {
+            for (int i = 0; i < graph[curr].size(); i++) {
                 Edge e = graph[curr].get(i);
                 inde[e.dest]--;
-                if(inde[e.dest] == 0) {
+                if (inde[e.dest] == 0) {
                     q.add(e.dest);
                 }
             }
         }
-        
+
     }
 
     // All path from src to dest
     // T.C : exponential
     public static void printallpath(ArrayList<Edge> graph[], int src, int dest, String path) {
-        if(src == dest) {
+        if (src == dest) {
             System.out.println(path + dest);
             return;
         }
 
-        for(int i=0; i<graph[src].size(); i++) {
+        for (int i = 0; i < graph[src].size(); i++) {
             Edge e = graph[src].get(i);
             printallpath(graph, e.dest, dest, path + src);
         }
@@ -371,10 +371,11 @@ public class Graph {
             return this.path - p2.path;
         }
     }
+
     public static void dijkstra(ArrayList<Edge> graph[], int src) {
         int dis[] = new int[graph.length];
-        for(int i=0; i<graph.length; i++) {
-            if(i != src) {
+        for (int i = 0; i < graph.length; i++) {
+            if (i != src) {
                 dis[i] = Integer.MAX_VALUE;
             }
         }
@@ -382,17 +383,17 @@ public class Graph {
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         pq.add(new Pair(src, 0));
 
-        while(!pq.isEmpty()) {
+        while (!pq.isEmpty()) {
             Pair curr = pq.remove();
-            if(!vis[curr.n]) {
+            if (!vis[curr.n]) {
                 vis[curr.n] = true;
-                for(int i=0; i<graph[curr.n].size(); i++) {
+                for (int i = 0; i < graph[curr.n].size(); i++) {
                     Edge e = graph[curr.n].get(i);
                     int u = e.src;
                     int v = e.dest;
                     int wt = e.wt;
 
-                    if(dis[u] + wt < dis[v]) { // update distance of src to v
+                    if (dis[u] + wt < dis[v]) { // update distance of src to v
                         dis[v] = dis[u] + wt;
                         pq.add(new Pair(v, dis[v]));
                     }
@@ -401,11 +402,45 @@ public class Graph {
         }
 
         // print all path from src to dest
-        for(int i=0; i<dis.length; i++) {
+        for (int i = 0; i < dis.length; i++) {
             System.out.print(dis[i] + " ");
         }
         System.out.println();
     }
+
+    // Bellman Ford Algo
+    public static void bellman(ArrayList<Edge> graph[], int src) { // O(VE)
+        int dist[] = new int[graph.length];
+        for (int i = 0; i < dist.length; i++) {
+            dist[i] = Integer.MAX_VALUE;
+        }
+
+        int V = graph.length;
+
+        for (int i = 0; i < V - 1; i++) {
+            // Edge -- O(E)
+            for (int j = 0; j < graph.length; j++) {
+                for (int k = 0; k < graph[j].size(); k++) {
+                    Edge e = graph[j].get(k);
+                    // u,v,wt
+                    int u = e.src;
+                    int v = e.dest;
+                    int wt = e.wt;
+                    // relaxation
+                    if ((dist[u] != Integer.MAX_VALUE) && (dist[u] + wt < dist[v])) {
+                        dist[v] = dist[u] + wt;
+                    }
+                }
+            }
+        }
+
+        // Print
+        for(int i=0; i<dist.length; i++) {
+            System.out.print(dist[i] + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
