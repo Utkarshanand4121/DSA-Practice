@@ -476,10 +476,103 @@ public class Graph {
         }
         System.out.print("Min cost is : " + finalCost); 
     }
+
+    // Cheapest Flight with k stops
+    public static void createGraph2(int flight[][], ArrayList<Edge> graph[]) {
+        for(int i=0; i<graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        for(int i=0; i<flight.length; i++) {
+            int src = flight[i][0];
+            int dest = flight[i][1];
+            int wt = flight[i][2];
+
+            Edge e = new Edge(src, dest, wt);
+            graph[src].add(e);
+        }
+    }
+
+    static class Info{
+        int v; 
+        int costs;
+        int stops;
+
+        public Info(int v, int c, int s) {
+            this.v = v;
+            this.costs = c;
+            this.stops = s;
+        }
+    }
+    public static int cheapestFlight(int n, int flight[][], int src, int dest, int k) {
+        ArrayList<Edge> graph[] = new ArrayList[n];
+        createGraph2(flight, graph);
+
+        int dist[] = new int[n];
+        for(int i=0; i<dist.length; i++) {
+            if(i != src) {
+                dist[i] = Integer.MAX_VALUE;
+            }
+        }
+
+        Queue<Info> q = new LinkedList<>();
+        q.add(new Info(src, 0, 0));
+
+        while(!q.isEmpty()) {
+            Info curr = q.remove();
+            if(curr.stops > k) {
+                break;
+            }
+
+            for(int i=0; i<graph[curr.v].size(); i++) {
+                Edge e = graph[curr.v].get(i);
+                int u = e.src;
+                int v = e.dest;
+                int wt = e.wt;
+
+                if(curr.costs + wt < dist[v] && curr.stops <= k) {
+                    dist[v] = curr.costs + wt;
+                    q.add(new Info(v, dist[v], curr.stops + 1));
+                }
+            }
+        }
+
+        // dist[dest]
+        if(dist[dest] == Integer.MAX_VALUE) {
+            return -1;
+        } else {
+            return dist[dest];
+        }
+    }
+
+    // Connecting cities
+    public static int connectCities(int cities[][]) {
+        PriorityQueue<Pair2> pq = new PriorityQueue<>();
+        boolean vis[] = new boolean[cities.length];
+
+        pq.add(new Pair2(0, 0));
+        int finalCost = 0;
+
+        while(!pq.isEmpty()) {
+            Pair2 curr = pq.remove();
+            if(!vis[curr.v]) {
+                vis[curr.v] = true;
+                finalCost += curr.cost;
+
+                for(int i=0; i<cities[curr.v].length; i++) {
+                    if(cities[curr.v][i] != 0) {
+                        pq.add(new Pair2(i, cities[curr.v][i]));
+                    }
+                }
+            }
+        }
+
+        return finalCost;
+    }
     public static void main(String[] args) {
-        int V = 7;
-        ArrayList<Edge> graph[] = new ArrayList[V];
-        createGraph(graph);
+        // int V = 7;
+        // ArrayList<Edge> graph[] = new ArrayList[V];
+        // createGraph(graph);
         // bfs(graph);
         // System.out.println();
         // dfs(graph, 0, new boolean[V]);
@@ -493,6 +586,13 @@ public class Graph {
         // System.out.println(isCycle(graph));
 
         // topSort(graph);
-        dijkstra(graph, 0);
+        // dijkstra(graph, 0);
+
+        // Cheapest Flight with k stops
+        int n = 4;
+        int flight[][] = {{0,1,100}, {1,2,100},{2,0,100},{1,3,600},{2,3,200}};
+        int src = 0, dest = 3, k = 1;
+        System.out.println(cheapestFlight(n, flight, src, dest, k));
+        
     }
 }
