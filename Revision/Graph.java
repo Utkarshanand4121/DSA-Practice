@@ -435,14 +435,14 @@ public class Graph {
         }
 
         // Print
-        for(int i=0; i<dist.length; i++) {
+        for (int i = 0; i < dist.length; i++) {
             System.out.print(dist[i] + " ");
         }
         System.out.println();
     }
 
     // Prims Algo
-    static class Pair2 implements Comparable<Pair2>{
+    static class Pair2 implements Comparable<Pair2> {
         int v;
         int cost;
 
@@ -456,34 +456,35 @@ public class Graph {
             return this.cost - p2.cost; // ascending
         }
     }
+
     public static void prims(ArrayList<Edge> graph[]) {
         boolean vis[] = new boolean[graph.length];
         PriorityQueue<Pair2> pq = new PriorityQueue<>();
         pq.add(new Pair2(0, 0));
 
         int finalCost = 0;
-        while(!pq.isEmpty()) {
+        while (!pq.isEmpty()) {
             Pair2 curr = pq.remove();
-            if(!vis[curr.v]) {
+            if (!vis[curr.v]) {
                 vis[curr.v] = true;
                 finalCost += curr.cost;
 
-                for(int i=0; i<graph[curr.v].size(); i++) {
+                for (int i = 0; i < graph[curr.v].size(); i++) {
                     Edge e = graph[curr.v].get(i);
                     pq.add(new Pair2(e.dest, e.wt));
                 }
             }
         }
-        System.out.print("Min cost is : " + finalCost); 
+        System.out.print("Min cost is : " + finalCost);
     }
 
     // Cheapest Flight with k stops
     public static void createGraph2(int flight[][], ArrayList<Edge> graph[]) {
-        for(int i=0; i<graph.length; i++) {
+        for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
         }
 
-        for(int i=0; i<flight.length; i++) {
+        for (int i = 0; i < flight.length; i++) {
             int src = flight[i][0];
             int dest = flight[i][1];
             int wt = flight[i][2];
@@ -493,8 +494,8 @@ public class Graph {
         }
     }
 
-    static class Info{
-        int v; 
+    static class Info {
+        int v;
         int costs;
         int stops;
 
@@ -504,13 +505,14 @@ public class Graph {
             this.stops = s;
         }
     }
+
     public static int cheapestFlight(int n, int flight[][], int src, int dest, int k) {
         ArrayList<Edge> graph[] = new ArrayList[n];
         createGraph2(flight, graph);
 
         int dist[] = new int[n];
-        for(int i=0; i<dist.length; i++) {
-            if(i != src) {
+        for (int i = 0; i < dist.length; i++) {
+            if (i != src) {
                 dist[i] = Integer.MAX_VALUE;
             }
         }
@@ -518,19 +520,19 @@ public class Graph {
         Queue<Info> q = new LinkedList<>();
         q.add(new Info(src, 0, 0));
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             Info curr = q.remove();
-            if(curr.stops > k) {
+            if (curr.stops > k) {
                 break;
             }
 
-            for(int i=0; i<graph[curr.v].size(); i++) {
+            for (int i = 0; i < graph[curr.v].size(); i++) {
                 Edge e = graph[curr.v].get(i);
                 int u = e.src;
                 int v = e.dest;
                 int wt = e.wt;
 
-                if(curr.costs + wt < dist[v] && curr.stops <= k) {
+                if (curr.costs + wt < dist[v] && curr.stops <= k) {
                     dist[v] = curr.costs + wt;
                     q.add(new Info(v, dist[v], curr.stops + 1));
                 }
@@ -538,7 +540,7 @@ public class Graph {
         }
 
         // dist[dest]
-        if(dist[dest] == Integer.MAX_VALUE) {
+        if (dist[dest] == Integer.MAX_VALUE) {
             return -1;
         } else {
             return dist[dest];
@@ -553,14 +555,14 @@ public class Graph {
         pq.add(new Pair2(0, 0));
         int finalCost = 0;
 
-        while(!pq.isEmpty()) {
+        while (!pq.isEmpty()) {
             Pair2 curr = pq.remove();
-            if(!vis[curr.v]) {
+            if (!vis[curr.v]) {
                 vis[curr.v] = true;
                 finalCost += curr.cost;
 
-                for(int i=0; i<cities[curr.v].length; i++) {
-                    if(cities[curr.v][i] != 0) {
+                for (int i = 0; i < cities[curr.v].length; i++) {
+                    if (cities[curr.v][i] != 0) {
                         pq.add(new Pair2(i, cities[curr.v][i]));
                     }
                 }
@@ -568,6 +570,187 @@ public class Graph {
         }
 
         return finalCost;
+    }
+
+    // Disjoint Set
+    static int n = 4;
+    static int par[] = new int[n];
+    static int rank[] = new int[n];
+
+    public static void init() {
+        for (int i = 0; i < n; i++) {
+            par[i] = i;
+        }
+    }
+
+    public static int find(int x) {
+        if (x == par[x]) {
+            return x;
+        }
+
+        return find(par[x]);
+    }
+
+    public static void union(int a, int b) {
+        int parA = find(a);
+        int parB = find(b);
+
+        if (rank[parA] == rank[parB]) {
+            par[parB] = parA;
+            rank[parA]++;
+        } else if (rank[parA] < rank[parB]) {
+            par[parA] = parB;
+        } else {
+            par[parB] = parA;
+        }
+    }
+
+    // Krusskal's Algo
+    static class Edge2 implements Comparable<Edge2>{
+        int src;
+        int dest;
+        int wt;
+
+        public Edge2(int s, int d, int w) {
+            this.src = s;
+            this.dest = d;
+            this.wt = w;
+        }
+
+        @Override
+        public int compareTo(Edge2 e2) {
+            return this.wt - e2.wt;
+        }
+    }
+
+    static void createGraph1(ArrayList<Edge2> edges) {
+        // edges
+        edges.add(new Edge2(0, 1, 10));
+        edges.add(new Edge2(0, 2, 15));
+        edges.add(new Edge2(0, 3, 30));
+        edges.add(new Edge2(1, 3, 40));
+        edges.add(new Edge2(2, 3, 50));
+    }
+
+    public static int find2(int x) {
+        if (x == par[x]) {
+            return x;
+        }
+
+        return par[x] = find2(par[x]);
+    }
+
+    public static void krushkalMst(ArrayList<Edge2> edges, int V) {
+        init();
+        Collections.sort(edges);
+        int mstCount = 0;
+        int count = 0;
+
+        for(int i=0; count<V-1; i++) {
+            Edge2 e = edges.get(i);
+            //(src, dest, wt)
+
+            int parA = find2(e.src);
+            int parB = find2(e.dest);
+            if(parA != parB) {
+                union(e.src, e.dest);
+                mstCount += e.wt;
+                count++;
+            }
+        }
+
+        System.out.println(mstCount);
+    }
+
+    // Flood Fill
+    public static void helper(int image[][], int sr, int sc, int color,boolean vis[][], int orgCol) {
+        if(sc < 0 || sr < 0 || sr >= image.length || sc >= image[0].length
+            || vis[sr][sc] || image[sr][sc] != orgCol) {
+                return;
+        }
+
+        image[sr][sc] = color;
+        //left
+        helper(image, sr, sc-1, color, vis, orgCol);
+        //right
+        helper(image, sr, sc+1, color, vis, orgCol);
+        //up
+        helper(image, sr-1, sc, color, vis, orgCol);
+        //down
+        helper(image, sr+1, sc, color, vis, orgCol);
+    }
+
+    public static int[][] floodFill(int image[][], int sr, int sc, int color) {
+        boolean vis[][] = new boolean[image.length][image[0].length];
+        helper(image, sr, sc, color, vis, image[sr][sc]);
+        return image;
+    }
+
+    // Kosaraju algo
+    static class Edge1 {
+        int src;
+        int dest;
+
+        public Edge1(int s, int d) {
+            this.src = s;
+            this.dest = d;
+        }
+    }
+    public static void topSort3(ArrayList<Edge1> graph[], int curr, boolean vis[], Stack<Integer> s) {
+        vis[curr] = true;
+
+        for(int i=0; i<graph[curr].size(); i++) {
+            Edge1 e = graph[curr].get(i);
+            if(!vis[e.dest]) {
+                topSort3(graph, e.dest, vis, s);
+            }
+        }
+        s.push(curr);
+    }
+
+    public static void dfs1(ArrayList<Edge1> graph[], int curr, boolean vis[]) {
+        vis[curr] = true;
+        System.out.print(curr + " ");
+
+        for(int i=0; i<graph[curr].size(); i++) {
+            Edge1 e = graph[curr].get(i);
+            if(!vis[e.dest]) {
+                dfs1(graph, e.dest, vis);
+            }
+        }
+    }
+    public static void kosaraju(ArrayList<Edge1> graph[], int V) { // O(V+E)
+        // Step 1
+        Stack<Integer> s = new Stack<>();
+        boolean vis[] = new boolean[V];
+        for(int i=0; i<V; i++) {
+            if(!vis[i]) {
+                topSort3(graph, i, vis, s);
+            }
+        }
+
+        // Step 2
+        ArrayList<Edge1> transpose[] = new ArrayList[V];
+        for(int i=0; i<graph.length; i++) {
+            transpose[i] = new ArrayList<>();
+        }
+
+        for(int i=0; i<V; i++) {
+            for(int j=0; j<graph[i].size(); j++) {
+                Edge1 e = graph[i].get(j);
+                transpose[e.dest].add(new Edge1(e.dest, e.src));
+            }
+        }
+
+        // Step 3
+        while(!s.isEmpty()) {
+            int curr = s.pop();
+            if(!vis[curr]) {
+                System.out.print("SCC -> ");
+                dfs1(transpose, curr, vis); // scc
+                System.out.println();
+            }
+        }
     }
     public static void main(String[] args) {
         // int V = 7;
@@ -589,10 +772,25 @@ public class Graph {
         // dijkstra(graph, 0);
 
         // Cheapest Flight with k stops
-        int n = 4;
-        int flight[][] = {{0,1,100}, {1,2,100},{2,0,100},{1,3,600},{2,3,200}};
-        int src = 0, dest = 3, k = 1;
-        System.out.println(cheapestFlight(n, flight, src, dest, k));
-        
+        // int n = 4;
+        // int flight[][] = {{0,1,100}, {1,2,100},{2,0,100},{1,3,600},{2,3,200}};
+        // int src = 0, dest = 3, k = 1;
+        // System.out.println(cheapestFlight(n, flight, src, dest, k));
+
+        // init();
+        // union(1, 3);
+        // System.out.println(find(3));
+        // union(2, 4);
+        // union(3, 6);
+        // union(1, 4);
+        // System.out.println(find(3));
+        // System.out.println(find(4));
+        // union(1, 5);
+
+        int V = 4;
+        ArrayList<Edge2> edges = new ArrayList<>();
+        createGraph1(edges);
+        krushkalMst(edges, V);
+
     }
 }
