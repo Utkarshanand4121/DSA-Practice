@@ -2,8 +2,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import org.w3c.dom.Node;
-
 public class BTRevision {
 
     static class Node {
