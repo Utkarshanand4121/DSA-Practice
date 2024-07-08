@@ -339,12 +339,61 @@ public class BT2Revision {
         }
     }
 
+    // Kth Ancestor
+    public static int KAncestor(Node root, int n, int k) {
+        if(root == null) {
+            return -1;
+        }
 
+        if(root.data == n) {
+            return 0;
+        }
+        int leftDist = KAncestor(root.left, n, k);
+        int rightDist = KAncestor(root.right, n, k);
+        if(leftDist == -1 && rightDist == -1) {
+            return -1;
+        }
+
+        int max = Math.max(leftDist, rightDist);
+        if(max+1 == k) {
+            System.out.println(root.data);
+        }
+
+        return max+1;
+    }
+
+    // Transform Sum Tree
+    public static int tranSum(Node root) {
+        if(root == null) {
+            return 0;
+        }
+
+        int leftChild = tranSum(root.left);
+        int rightChild = tranSum(root.right);
+        int data = root.data;
+
+        int newLeft = root.left == null ? 0 : root.left.data;
+        int newRight = root.right == null ? 0 : root.right.data;
+
+        root.data = newLeft + leftChild + newRight + rightChild;
+        return data;
+    }
+
+
+    public static void preOrder(Node root) {
+        if(root == null) {
+            return;
+        }
+
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
         BinaryTree tree = new BinaryTree();
         Node root = tree.builtTree(nodes);
-        System.out.println(root.data);
+        // System.out.println(root.data);
         // tree.preOrder(root);
         // System.out.println();
         // tree.level(root);
@@ -361,7 +410,11 @@ public class BT2Revision {
 
         // System.out.println(tree.lca2(root, 4, 5).data);
 
-        System.out.println(tree.minDist(root, 4, 6));
-        
+        // System.out.println(tree.minDist(root, 4, 6));
+
+        // KAncestor(root, 5, 2);
+
+        tranSum(root);
+        preOrder(root);
     }
 }
